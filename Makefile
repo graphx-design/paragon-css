@@ -8,7 +8,7 @@ BROTLI  := brotli -f -k -n
 
 CSS_SRC    := $(sort $(wildcard src/*.css))
 
-CSS_ASSETS := $(addprefix dist/,$(notdir $(CSS_SRC))) docs/style.css
+CSS_ASSETS := $(addprefix dist/,$(notdir $(CSS_SRC))) docs/dist.css
 
 GZIP_ASSETS := $(addsuffix .gz,$(CSS_ASSETS))
 
@@ -17,19 +17,19 @@ BROTLI_ASSETS := $(addsuffix .br,$(CSS_ASSETS))
 help:
 	@echo "Targets:"
 	@echo
-	@echo "  dist   Create/update dist/*.css and map files"
+	@echo "  dist   Create/update dist/ and docs/"
 	@echo "  watch  Waits for changes in src/ and makes 'dist' automatically"
-	@echo "  build  Like 'dist', plus gzip and Brotli files"
+	@echo "  full  Like 'dist', plus gzip and Brotli files"
 	@echo "  clean  Empty dist/"
 	@echo "  to-github  Rsync to ../github-paragon.css/"
 	@echo
 
 dist:	$(CSS_ASSETS)
 
-build:	$(CSS_ASSETS) $(GZIP_ASSETS) $(BROTLI_ASSETS)
+full:	$(CSS_ASSETS) $(GZIP_ASSETS) $(BROTLI_ASSETS)
 
 clean:
-	rm -fv dist/*
+	rm -fv dist/* docs/dist.*
 
 watch:	dist
 	@echo "Watching src/ for changes..."
@@ -39,7 +39,7 @@ watch:	dist
 dist/%.css:	src/%.css $(CSS_SRC)
 	$(POSTCSS) $< -o $@
 
-docs/style.css:	docs/style.src.css $(CSS_SRC)
+docs/dist.css:	docs/style.css $(CSS_SRC)
 	$(POSTCSS) $< -o $@
 
 %.gz:	%
@@ -52,6 +52,6 @@ to-github:
 	rsync -xahiv --delete --exclude '.git' --exclude 'node_modules' --exclude '*.gz' --exclude '*.br' ./ ../github-paragon-css/
 
 # Don't let make search for files with coinciding names.
-.PHONY: help dist build clean to-github watch
+.PHONY: help dist full clean to-github watch
 
 .SILENT:	help
