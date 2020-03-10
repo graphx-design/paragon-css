@@ -1,0 +1,289 @@
+<html>
+	<head>
+		<title>Paragon CSS Framework</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="dist/all.css">
+		<link rel="stylesheet" type="text/css" href="dist/demo.css">
+	</head>
+	<body class="pgn-sans pgn-l-3">
+		<header class="pgn-container">
+			<h1 style="display:inline-block">Paragon CSS Framework</h1>
+		</header>
+		<main class="pgn-container pgn-stretch">
+
+
+			<section>
+				<section>
+					<h2>Introduction</h2>
+					<p>
+					Almost all classes begin with the prefix <code>pgn-</code> to prevent collisions with other frameworks.  For
+					brevity, there is no prefix for attribute classes like <code>is-<em>something</em></code>,
+					<code>has-<em>something</em></code> and <code>size-<em>something</em></code>.
+					</p>
+					<p>
+					Compiled CSS files are located in <code>dist/</code>.  You may use <code>all.css</code> to get the entire framework
+					at once, or any of the individual files described below.  Be sure to import them in order to avoid priority side-effects.
+					</p>
+				</section>
+				<section>
+					<h3>Browser Support</h3>
+					<dl>
+						<dt>Chrome</dt><dd>63 (2017)</dd>
+						<dt>Safari</dt><dd>11 (2017)</dd>
+						<dt>Edge</dt><dd>14 (2016)</dd>
+						<dt>Firefox</dt><dd>52 (2017)</dd>
+						<dt>Opera</dt><dd>50 (2018, based on Chromium 63)</dd>
+						<dt>Internet Explorer</dt><dd>11 (2013)</dd>
+					</dl>
+				</section>
+			</section>
+
+
+			<section>
+				<h2>Reset <code>reset.css</code></h2>
+				<p>
+				Minimal, non-opinionated reset to help normalize output across browsers.
+				</p>
+			</section>
+
+
+			<section>
+				<h2>Typography <code>typography.css</code></h2>
+				<dl>
+					<dt><code>.pgn-mono</code></dt>
+					<dd>System and user-preferred monospace font families (automatically applied to <code class="html-tag">code</code>, <code class="html-tag">kbd</code>, <code class="html-tag">pre</code>, <code class="html-tag">samp</code>)</dd>
+
+					<dt><code>.pgn-sans</code></dt>
+					<dd>System and user-preferred sans-serif font families</dd>
+
+					<dt><code>.pgn-serif</code></dt>
+					<dd>System and user-preferred serif font families</dd>
+				</dl>
+			</section>
+
+
+			<section>
+				<h2>Layout <code>layout.css</code></h2>
+				<section>
+					<h3>Responsive</h3>
+					<p>
+					Certain classes restrict which devices can see an element, by viewport width or display type.  Note that the
+					names "mobile", "tablet" and "desktop" are used as nicknames for the three responsive size ranges, not as true
+					device identification.  CSS media queries also use a "device pixel ratio" to define their own meaning for "px",
+					so those are not actual pixels.
+					</p>
+					<dl>
+						<dt>Mobile:</dt>
+						<dd>Up to 767px, <code>.pgn-mobile-only</code>, <code>.pgn-tablet-down</code></dd>
+
+						<dt>Tablet:</dt>
+						<DD>From 768px to 991px, <code>.pgn-tablet-only</code>, <code>.pgn-tablet-up</code>, <code>.pgn-tablet-down</code></dd>
+
+						<dt>Desktop:</dt>
+						<dd>From 992px up, <code>.pgn-tablet-up</code>, <code>.pgn-desktop-only</code></dd>
+
+						<dt>Print:</dt>
+						<dd><code>.pgn-print-only</code>, <code>.pgn-screen-only</code> (non-screen is considered "print")</dd>
+					</dl>
+				</section>
+				<section>
+					<h3>Block <code>.pgn-block</code></h3>
+					<p>
+					Makes any element (including buttons) <code>display: block</code> and full width.
+					</p>
+				</section>
+				<section>
+					<h3>Generic Text Container <code>.pgn-container</code></h3>
+					<p>
+					The <code>.pgn-container</code> class pads a block and limits its width on large viewports.
+					</p>
+				</section>
+				<section>
+					<h3>Header/Main/Footer Layout <code>.pgn-l-3</code></h3>
+					<div class="box">
+						<div class="box">
+							Header block
+						</div>
+						<div class="box">
+							<code>.pgn-stretch</code> main block
+						</div>
+						<div class="box">
+							Footer block (stays at document bottom but never above viewport bottom)
+						</div>
+					</div>
+				</section>
+			</section>
+
+
+			<section>
+				<h2>Grid <code>grid.css</code></h2>
+				<p>
+				You may import <code>grid-10.css</code>, <code>grid-24.css</code> or both in addition to the base
+				<code>grid.css</code> in your project.  Those two bases were chosen for their versatility: areas can be divided by
+				2, 3, 4, 5, 6, 8, 10, 12 and 24.
+				</p>
+				<p>
+				There is no mandatory grid container.  Rows are <code>.pgn-row-10</code> or <code>.pgn-row-24</code> according to
+				whether you want the row to be divided in 10<sup>ths</sup> or 24<sup>ths</sup>.  Columns are <code>.pgn-col-X</code>
+				where <code></code> is the multiple width.
+				</p>
+				<p>
+				<code>.pgn-col-*</code> padding is sensitive to <code>.pgn-density-*</code> higher in the DOM tree
+				</p>
+				<section>
+					<h3>Grid of 10<sup>ths</sup> <code>.pgn-row-10</code></h3>
+					<div class="pgn-row-10 pgn-density-spaced pgn-mono">
+						<div class="pgn-col-1">.pgn-col-1</div>
+						<div class="pgn-col-9">.pgn-col-9</div>
+						<div class="pgn-col-2">.pgn-col-2</div>
+						<div class="pgn-col-8">.pgn-col-8</div>
+						<div class="pgn-col-3">.pgn-col-3</div>
+						<div class="pgn-col-7">.pgn-col-7</div>
+						<div class="pgn-col-4">.pgn-col-4</div>
+						<div class="pgn-col-6">.pgn-col-6</div>
+						<div class="pgn-col-5">.pgn-col-5</div>
+						<div class="pgn-col-5">.pgn-col-5</div>
+						<div class="pgn-col-10">.pgn-col-10</div>
+					</div>
+				</section>
+				<section>
+					<h3>Grid of 24<sup>ths</sup> <code>.pgn-row-24</code></h3>
+					<div class="pgn-row-24 pgn-density-spaced pgn-mono">
+						<div class="pgn-col-1">.pgn-col-1</div>
+						<div class="pgn-col-23">.pgn-col-23</div>
+						<div class="pgn-col-2">.pgn-col-2</div>
+						<div class="pgn-col-22">.pgn-col-22</div>
+						<div class="pgn-col-3">.pgn-col-3</div>
+						<div class="pgn-col-21">.pgn-col-21</div>
+						<div class="pgn-col-4">.pgn-col-4</div>
+						<div class="pgn-col-20">.pgn-col-20</div>
+						<div class="pgn-col-5">.pgn-col-5</div>
+						<div class="pgn-col-19">.pgn-col-19</div>
+						<div class="pgn-col-6">.pgn-col-6</div>
+						<div class="pgn-col-18">.pgn-col-18</div>
+						<div class="pgn-col-7">.pgn-col-7</div>
+						<div class="pgn-col-17">.pgn-col-17</div>
+						<div class="pgn-col-8">.pgn-col-8</div>
+						<div class="pgn-col-16">.pgn-col-16</div>
+						<div class="pgn-col-9">.pgn-col-9</div>
+						<div class="pgn-col-15">.pgn-col-15</div>
+						<div class="pgn-col-10">.pgn-col-10</div>
+						<div class="pgn-col-14">.pgn-col-14</div>
+						<div class="pgn-col-11">.pgn-col-11</div>
+						<div class="pgn-col-13">.pgn-col-13</div>
+						<div class="pgn-col-12">.pgn-col-12</div>
+						<div class="pgn-col-12">.pgn-col-12</div>
+					</div>
+				</section>
+
+
+				<section>
+					<h3>Density</h3>
+					<p>
+					Three classes to be parents (immediate or not) of grid cells are specified from most to least relaxed, so the
+					least relaxed wins.
+					</p>
+					<div class="pgn-row-24">
+						<div class="pgn-col-8" style="border:none">
+							<div class="pgn-row-10 pgn-density-seamless"><div class="pgn-col-10">
+					<code>.pgn-density-seamless .pgn-col-*</code>
+							</div></div>
+						</div>
+						<div class="pgn-col-8" style="border:none">
+							<div class="pgn-row-10 pgn-density-spaced"><div class="pgn-col-10">
+					<code>.pgn-density-spaced .pgn-col-*</code>
+							</div></div>
+						</div>
+						<div class="pgn-col-8" style="border:none">
+							<div class="pgn-row-10 pgn-density-relaxed"><div class="pgn-col-10">
+									<code>.pgn-density-relaxed .pgn-col-*</code>
+							</div></div>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<h3>Responsive</h3>
+					<dl>
+						<dt><code>.pgn-doubling .pgn-col-*</code></dt>
+						<dd>
+						Makes grid cells double in relative width when stepping down from "desktop" to "tablet" size, and double
+						again down to "mobile" size. (i.e. A 1/12<sup>th</sup> cell would become 1/6<sup>th</sup> wide in "tablet"
+						viewports and 1/3<sup>rd</sup> wide in "mobile" viewports.)
+						</dd>
+					</dl>
+				</section>
+			</section>
+
+
+			<section>
+				<h2>Forms <code>forms.css</code></h2>
+				<p>
+				Note that buttons and input widgets with <code>:focus</code> get <code>z-index: 1000</code> in addition to a halo.
+				</p>
+				<section>
+					<h3>Fields <code>.pgn-field</code></h3>
+					<p>TODO</p>
+				</section>
+				<section>
+					<h3>Buttons <code>.pgn-form button, .pgn-button</code></h3>
+					<form class="pgn-form">
+						<button onclick="return false;">Normal</button>
+						<button onclick="return false;" class="is-active">:active, .is-active</button>
+						<button onclick="return false;" disabled>:disabled</button>
+						<button onclick="return false;" class="is-secondary">.is-secondary</button>
+					</form>
+					<h3>Button groups <code>.pgn-group button, .pgn-group .pgn-button</code></h3>
+					<form class="pgn-form">
+						<div class="pgn-group">
+							<button onclick="return false;">First</button>
+							<button onclick="return false;">Middle</button>
+							<button onclick="return false;" disabled>Disabled</button>
+							<button onclick="return false;" class="is-active">Active</button>
+							<button onclick="return false;">Last</button>
+						</div>
+					</form>
+					<h3>Icon Buttons <code>.pgn-icon-button</code></h3>
+					<p>TODO: do all the shades, some kind of contour like secondary buttons maybe?</p>
+					<form class="pgn-form">
+						<button onclick="return false;" class="pgn-icon-button" title="Normal">M</button>
+						<a href="#" onclick="return false;" class="pgn-icon-button is-active" title="Active">M</a>
+						<button onclick="return false;" class="pgn-icon-button" disabled title="Disabled">M</button>
+					</form>
+					<h3>Theming</h3>
+					<p>
+					Buttons automatically adapt to any background and foreground colors as well as font sizes:
+					</p>
+					<form class="pgn-form">
+						<button onclick="return false;" style="background-color:white; color:black;">Black on white</button>
+						<button onclick="return false;" style="background-color:orange; color:black;">Black on orange</button>
+						<button onclick="return false;" style="background-color:red; color:white; font-size: 16pt;">White on red, 16pt</button>
+						<button onclick="return false;" style="background-color:green; color:white; font-size: 16pt;">White on green, 16pt</button>
+						<button onclick="return false;" style="background-color:blue; color:white; font-size: 9pt;">White on blue, 9pt</button>
+						<a href="" onclick="return false;" class="pgn-button" style="background-color:black; color:white; font-size: 9pt;">White on black, 9pt</a>
+						<br>
+						<button onclick="return false;" class="pgn-icon-button" style="background-color:white; color:black;">M</button>
+						<button onclick="return false;" class="pgn-icon-button" style="background-color:orange; color:black;">M</button>
+						<button onclick="return false;" class="pgn-icon-button" style="background-color:red; color:white; font-size: 16pt;">M</button>
+						<button onclick="return false;" class="pgn-icon-button" style="background-color:green; color:white; font-size: 16pt;">M</button>
+						<button onclick="return false;" class="pgn-icon-button" style="background-color:blue; color:white; font-size: 9pt;">M</button>
+						<button onclick="return false;" class="pgn-icon-button" style="background-color:black; color:white; font-size: 9pt;">M</button>
+					</form>
+				</section>
+				<section>
+					<h3>Responsive</h3>
+					<p>
+					From "tablet" size down and with browsers reporting CSS 4's <code>pointer:coarse</code>, submit, reset and
+					generic buttons have a minimum width and height of 10mm regardless of font size.
+					</p>
+				</section>
+			</section>
+
+
+		</main>
+		<footer>
+			<div>This is a DIV in the FOOTER!</div>
+		</footer>
+	</body>
+</html>
