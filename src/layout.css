@@ -1,0 +1,74 @@
+/* Layout 3: header, main (expands), footer */
+body.pgn-l-3 {
+	display: flex;
+	flex-direction: column;
+}
+.pgn-l-3 .pgn-stretch {
+	flex: 1;
+}
+
+.pgn-container {
+	display: block;
+	max-width: 100%;
+	width: auto;
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
+}
+
+.pgn-block {
+	display: block;
+	width: 100%;
+}
+
+/* NOTE: In media queries, "px" is subject to "device pixel ratio" for higher density screens. */
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+	.pgn-tablet-up,
+	.pgn-tablet-only,
+	.pgn-desktop-only {
+		display: none;
+	}
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.pgn-mobile-only,
+	.pgn-desktop-only {
+		display: none;
+	}
+}
+
+/* Desktops of all sizes */
+@media only screen and (min-width: 992px) {
+	.pgn-mobile-only,
+	.pgn-tablet-only,
+	.pgn-tablet-down {
+		display: none;
+	}
+}
+
+/* Desktops, small */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* Desktops, large */
+@media only screen and (min-width: 1200px) {
+	.pgn-container {
+		width: 1127px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* Print (we generalize non-screen labeling as "print") */
+@media only screen {
+	.pgn-print-only {
+		display: none;
+	}
+}
+@media not screen {
+	.pgn-screen-only {
+		display: none;
+	}
+}

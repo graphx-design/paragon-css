@@ -1,0 +1,54 @@
+/* Grids
+ *
+ * Responsive:
+ *
+ * .pgn-row-*.pgn-doubling doubles column widths with each step-down in screen size
+ *
+ * .pgn-row-*.stacking immediately goes full width from tablet-down
+ *
+ * An img directly inside a .pgn-col-* gets 100% width
+ */
+
+[class*="pgn-row-"] {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: inherit;
+	align-items: stretch;
+	width: 100%;
+}
+
+[class*="pgn-col-"] {
+	display: inline-block;
+	vertical-align: top;
+}
+
+[class*="pgn-col-"] > img {
+	width: 100%;
+}
+
+.pgn-density-relaxed [class*="pgn-col-"] {
+	padding: 1.5rem;
+}
+.pgn-density-spaced [class*="pgn-col-"] {
+	padding: 0.5rem;
+}
+.pgn-density-seamless [class*="pgn-col-"] {
+	padding: 0;
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+	/* Stack ALL */
+	.stacking [class*="pgn-col-"] {
+		width: 100% !important;
+	}
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	/* Stack ALL */
+	.stacking [class*="pgn-col-"] {
+		width: 100% !important;
+	}
+}

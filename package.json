@@ -1,0 +1,31 @@
+{
+  "name": "paragon-css",
+  "version": "0.1.0",
+  "description": "Modern minimalist CSS design framework",
+  "main": "dist/all.css",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "postcss-cli": "^7.1.0",
+    "cssnano": "^4.1.10",
+    "postcss-combine-media-query": "^1.0.0",
+    "postcss-custom-properties": "^9.1.1",
+    "postcss-import": "^12.0.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graphx-design/paragon-css.git"
+  },
+  "keywords": [
+    "css",
+    "framework"
+  ],
+  "author": "Graph X Design <info@gxd.ca> (https://github.com/graphx-design)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/graphx-design/paragon-css/issues"
+  },
+  "homepage": "https://graphx-design.github.io/paragon-css/"
+}

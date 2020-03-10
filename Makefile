@@ -8,7 +8,7 @@ BROTLI  := brotli -f -k -n
 
 CSS_SRC    := $(sort $(wildcard src/*.css))
 
-CSS_ASSETS := $(addprefix dist/,$(notdir $(CSS_SRC)))
+CSS_ASSETS := $(addprefix dist/,$(notdir $(CSS_SRC))) docs/style.css
 
 GZIP_ASSETS := $(addsuffix .gz,$(CSS_ASSETS))
 
@@ -37,6 +37,9 @@ watch:	dist
 
 # Pessimistic by design: rebuilds all assets whenever any source changes.
 dist/%.css:	src/%.css $(CSS_SRC)
+	$(POSTCSS) $< -o $@
+
+docs/style.css:	docs/style.src.css $(CSS_SRC)
 	$(POSTCSS) $< -o $@
 
 %.gz:	%
