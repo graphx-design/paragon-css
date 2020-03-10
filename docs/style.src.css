@@ -1,0 +1,78 @@
+@import "all.css";
+
+h2 {
+	color: #444;
+	border-bottom: 1px solid #444;
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+h2 code {
+	color: #666;
+	font-size: 80%;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+h2 code:before {
+	content: '@import "';
+	color: #aaa;
+}
+h2 code:after {
+	content: '"';
+	color: #aaa;
+}
+
+h3 {
+	color: #444;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+h3 code {
+	margin-left: 3em;
+	font-size: 80%;
+	color: #666;
+}
+
+[class*="pgn-row-"] {
+	margin-top: 1rem;
+}
+
+[class*="pgn-row-"] [class*="pgn-col-"],
+.box {
+	border: 1px solid #444;
+}
+
+p code,
+dd code {
+	background-color: #eee;
+}
+
+dl {
+	display: grid;
+	grid-template-columns: max-content auto;
+}
+dt,
+dd {
+	padding: 0.25rem;
+	margin-bottom: 0.5rem;
+}
+dt {
+	grid-column-start: 1;
+	font-weight: bold;
+	text-align: right;
+	background-color: #eee;
+	color: #333;
+}
+dd code {
+	/* margin-right: 2em; */
+}
+
+.html-tag:before {
+	content: "<";
+}
+.html-tag:after {
+	content: "/>";
+}
