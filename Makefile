@@ -8,14 +8,13 @@ BROTLI  := brotli -f -k -n
 
 CSS_SRC    := $(sort $(wildcard src/*.scss))
 
-CSS_ASSETS := $(addprefix dist/,$(addsuffix .css,$(basename $(notdir $(CSS_SRC))))) docs/dist.css
+CSS_ASSETS := $(addprefix dist/,$(addsuffix .css,$(filter-out _lib,$(basename $(notdir $(CSS_SRC)))))) docs/dist.css
 
 GZIP_ASSETS := $(addsuffix .gz,$(CSS_ASSETS))
 
 BROTLI_ASSETS := $(addsuffix .br,$(CSS_ASSETS))
 
 help:
-	@echo $(CSS_ASSETS)
 	@echo "Targets:"
 	@echo
 	@echo "  dist   Create/update dist/ and docs/"
