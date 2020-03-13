@@ -1,0 +1,35 @@
+@import "_lib.scss";
+
+[class*="pgn-row-"] {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: inherit;
+	align-items: stretch;
+	width: 100%;
+}
+
+[class*="pgn-col-"] {
+	display: inline-block;
+	vertical-align: top;
+}
+
+[class*="pgn-col-"] > img {
+	width: 100%;
+}
+
+.pgn-density-relaxed [class*="pgn-col-"] {
+	padding: $padding-relaxed;
+}
+.pgn-density-spaced [class*="pgn-col-"] {
+	padding: $padding-spaced;
+}
+.pgn-density-seamless [class*="pgn-col-"] {
+	padding: $padding-seamless;
+}
+
+@include media-tablet-down {
+	.pgn-stacking [class*="pgn-col-"] {
+		width: 100%;
+	}
+}

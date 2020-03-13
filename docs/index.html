@@ -2,7 +2,7 @@
 	<head>
 		<title>Paragon CSS Framework</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="dist.css">
 	</head>
 	<body class="pgn-sans pgn-l-3">
 		<header class="pgn-container">
@@ -14,6 +14,9 @@
 			<section>
 				<section>
 					<h2>Introduction</h2>
+					<p>
+					TODO: motivation, our internal use
+					</p>
 					<p>
 					Almost all classes begin with the prefix <code>pgn-</code> to prevent collisions with other frameworks.  For
 					brevity, there is no prefix for attribute classes like <code>is-<em>something</em></code>,
@@ -99,6 +102,9 @@
 				</section>
 				<section>
 					<h3>Header/Main/Footer Layout <code>.pgn-l-3</code></h3>
+					<p>
+					TODO: Description, clean up example
+					</p>
 					<div class="box">
 						<div class="box">
 							Header block
@@ -128,6 +134,9 @@
 				</p>
 				<p>
 				<code>.pgn-col-*</code> padding is sensitive to <code>.pgn-density-*</code> higher in the DOM tree
+				</p>
+				<p>
+				An <code>&lt;img&gt;</code> directly inside a <code>.pgn-col-*</code> automatically gets full width.
 				</p>
 				<section>
 					<h3>Grid of 10<sup>ths</sup> <code>.pgn-row-10</code></h3>
@@ -211,6 +220,11 @@
 						again down to "mobile" size. (i.e. A 1/12<sup>th</sup> cell would become 1/6<sup>th</sup> wide in "tablet"
 						viewports and 1/3<sup>rd</sup> wide in "mobile" viewports.)
 						</dd>
+
+						<dt><code>.pgn-stacking .pgn-col-*</code></dt>
+						<dd>
+						Makes grid cells go full-width for "tablet" and "mobile" sizes.
+						</dd>
 					</dl>
 				</section>
 			</section>
@@ -226,12 +240,29 @@
 					<p>TODO</p>
 				</section>
 				<section>
+					<h3>Checkboxes <code>.pgn-form label input[type=checkbox]</code></h3>
+					<p>TODO</p>
+				</section>
+				<section>
+					<h3>Radio checkboxes <code>.pgn-form label input[type=radio]</code></h3>
+					<p>TODO</p>
+				</section>
+				<section>
 					<h3>Buttons <code>.pgn-form button, .pgn-button</code></h3>
 					<form class="pgn-form">
 						<button onclick="return false;">Normal</button>
 						<button onclick="return false;" class="is-active">:active, .is-active</button>
 						<button onclick="return false;" disabled>:disabled</button>
 						<button onclick="return false;" class="is-secondary">.is-secondary</button>
+					</form>
+					<h3>Icon Buttons <code>.pgn-icon-button</code></h3>
+					<p>TODO: just icons no circle, so less gaps</p>
+					<form class="pgn-form">
+							<button onclick="return false;" class="pgn-icon-button" title="Normal">M</button>
+							<a href="#" onclick="return false;" class="pgn-icon-button is-active" title=":active, .is-active">M</a>
+							<button onclick="return false;" class="pgn-icon-button" disabled title=":disabled">M</button>
+							<button onclick="return false;" class="pgn-icon-button is-secondary" title=".is-secondary">M</button>
+						</dl>
 					</form>
 					<h3>Button groups <code>.pgn-group button, .pgn-group .pgn-button</code></h3>
 					<form class="pgn-form">
@@ -243,38 +274,29 @@
 							<button onclick="return false;">Last</button>
 						</div>
 					</form>
-					<h3>Icon Buttons <code>.pgn-icon-button</code></h3>
-					<p>TODO: do all the shades, some kind of contour like secondary buttons maybe?</p>
-					<form class="pgn-form">
-						<button onclick="return false;" class="pgn-icon-button" title="Normal">M</button>
-						<a href="#" onclick="return false;" class="pgn-icon-button is-active" title="Active">M</a>
-						<button onclick="return false;" class="pgn-icon-button" disabled title="Disabled">M</button>
-					</form>
 					<h3>Theming</h3>
 					<p>
-					Buttons automatically adapt to any background and foreground colors as well as font sizes:
+					Normal buttons automatically adapt to any background/foreground colors and font sizes set on their elements, as
+					well as their parent background color.  Icon buttons adapt to font size and their parent background color.
 					</p>
 					<form class="pgn-form">
-						<button onclick="return false;" style="background-color:white; color:black;">Black on white</button>
-						<button onclick="return false;" style="background-color:orange; color:black;">Black on orange</button>
 						<button onclick="return false;" style="background-color:red; color:white; font-size: 16pt;">White on red, 16pt</button>
-						<button onclick="return false;" style="background-color:green; color:white; font-size: 16pt;">White on green, 16pt</button>
+						<button onclick="return false;" style="background-color:white; color:black;">Black on white</button>
 						<button onclick="return false;" style="background-color:blue; color:white; font-size: 9pt;">White on blue, 9pt</button>
-						<a href="" onclick="return false;" class="pgn-button" style="background-color:black; color:white; font-size: 9pt;">White on black, 9pt</a>
-						<br>
-						<button onclick="return false;" class="pgn-icon-button" style="background-color:white; color:black;">M</button>
-						<button onclick="return false;" class="pgn-icon-button" style="background-color:orange; color:black;">M</button>
-						<button onclick="return false;" class="pgn-icon-button" style="background-color:red; color:white; font-size: 16pt;">M</button>
-						<button onclick="return false;" class="pgn-icon-button" style="background-color:green; color:white; font-size: 16pt;">M</button>
-						<button onclick="return false;" class="pgn-icon-button" style="background-color:blue; color:white; font-size: 9pt;">M</button>
-						<button onclick="return false;" class="pgn-icon-button" style="background-color:black; color:white; font-size: 9pt;">M</button>
+						<span style="display: inline-block; background-color: orange; padding: 0.1em;">
+							<button onclick="return false;">Normal</button>
+							<button onclick="return false;" class="is-secondary">.is-secondary</button>
+							<button onclick="return false;" class="pgn-icon-button" title="Normal">M</button>
+							<a href="#" onclick="return false;" class="pgn-icon-button is-active" title=":active, .is-active">M</a>
+							<button onclick="return false;" class="pgn-icon-button" disabled style="font-size: 16pt;" title=":disabled, 16pt">M</button>
+							<button onclick="return false;" class="pgn-icon-button is-secondary" style="font-size: 9pt;" title=".is-secondary, 9pt">M</button>
+						</span>
 					</form>
 				</section>
 				<section>
 					<h3>Responsive</h3>
 					<p>
-					From "tablet" size down and with browsers reporting CSS 4's <code>pointer:coarse</code>, submit, reset and
-					generic buttons have a minimum width and height of 10mm regardless of font size.
+					For touch devices, all buttons have a minimum width and height of 10mm regardless of font size.
 					</p>
 				</section>
 			</section>

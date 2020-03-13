@@ -1,3 +1,5 @@
+@import "_lib.scss";
+
 /* Focus */
 
 .pgn-form button:focus,
@@ -18,7 +20,8 @@
 /* Typically: button, input type=button|submit|reset, a */
 
 .pgn-form button,
-.pgn-button {
+.pgn-button,
+.pgn-icon-button {
 	display: inline-block;
 	text-align: center;
 	text-decoration: none;
@@ -26,13 +29,18 @@
 	text-shadow: 0 0 1px rgba(127, 127, 127, 0.33);
 	cursor: pointer;
 	user-select: none;
-	padding: 0.5em 1em;
-	margin: 0 0.33em 0 0;
 	border: none;
 	outline: none;
-	border-radius: 0.2em;
-	background-color: #eee;
+	line-height: normal;
 	color: #000;
+	background-color: rgba(127, 127, 127, 0.125);
+}
+
+.pgn-form button,
+.pgn-button {
+	padding: 0.5em 1em;
+	margin: 0 0.33em 0 0;
+	border-radius: $small-radius;
 	background-image: linear-gradient(
 		180deg,
 		rgba(255, 255, 255, 0.33),
@@ -44,7 +52,9 @@
 }
 
 .pgn-form button.is-secondary,
-.pgn-button.is-secondary {
+.pgn-button.is-secondary,
+.pgn-icon-button.is-secondary {
+	color: #444;
 	background: rgba(0, 0, 0, 0.01);
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
 }
@@ -86,7 +96,8 @@
 }
 
 .pgn-form button:disabled,
-.pgn-button:disabled {
+.pgn-button:disabled,
+.pgn-icon-button:disabled {
 	color: #888;
 	cursor: not-allowed;
 	cursor: no-drop;
@@ -111,57 +122,43 @@
 }
 .pgn-group > button:first-child,
 .pgn-group > .pgn-button:first-child {
-	border-radius: 0.2em 0 0 0.2em;
+	border-radius: $small-radius 0 0 $small-radius;
 }
 
 .pgn-group > button:last-child,
 .pgn-group > .pgn-button:last-child {
-	border-radius: 0 0.2em 0.2em 0;
+	border-radius: 0 $small-radius $small-radius 0;
 }
 
 /* Icon buttons */
 
 /* NOTE: Class is referred twice for specificity. */
 
-/* TODO: Merge common things with .pgn-button in a common-trunk selector */
-
 .pgn-icon-button.pgn-icon-button {
-	display: inline-block;
-	background: #eee;
-	color: #000;
-	text-shadow: 0 0 1px rgba(127, 127, 127, 0.33);
 	border-radius: 4em;
-	box-shadow: none;
-	text-align: center;
-	vertical-align: middle;
 	padding: 0.75em;
 	margin: 0 0.5em 0 0;
 	width: 2.5em;
 	height: 2.5em;
-	outline: none;
-	border: none;
-	text-decoration: none;
-	line-height: normal;
-}
-.pgn-icon-button.pgn-icon-button.is-secondary {
-	background: rgba(0, 0, 0, 0.02);
+	background-image: none;
+	box-shadow: none;
+	/* Material Design's Floating ActionButton:
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+	*/
 }
 .pgn-icon-button.pgn-icon-button:hover {
-	background: rgba(0, 0, 0, 0.02);
-}
-.pgn-icon-button.pgn-icon-button.is-secondary:hover {
-	background: rgba(0, 0, 0, 0.02);
+	background-image: none;
 }
 .pgn-icon-button.pgn-icon-button:active,
 .pgn-icon-button.pgn-icon-button.is-active {
-	background: rgba(0, 0, 0, 0.02);
-}
-.pgn-icon-button.pgn-icon-button.is-secondary:active,
-.pgn-icon-button.pgn-icon-button.is-secondary.is-active {
-	background: rgba(0, 0, 0, 0.02);
+	background-image: none;
+	box-shadow: inset 0 0 0 1px rgba(96, 96, 96, 0.14),
+		inset 0 -1px 1px 0 rgba(96, 96, 96, 0.06),
+		inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15);
 }
 .pgn-icon-button.pgn-icon-button:disabled {
-	background: rgba(0, 0, 0, 0.02);
+	background-image: none;
+	box-shadow: none;
 }
 
 /* Free-form input */
@@ -194,9 +191,10 @@
 
 /* Responsive */
 
-@media only screen and (max-width: 991px), only screen and (pointer: coarse) {
+@include media-touch {
 	.pgn-form button,
 	.pgn-button,
+	.pgn-icon-button,
 	.pgn-form input[type="submit"],
 	.pgn-form input[type="reset"],
 	.pgn-form input[type="button"] {

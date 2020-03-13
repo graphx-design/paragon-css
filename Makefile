@@ -6,15 +6,16 @@ POSTCSS := postcss
 GZIP    := gzip --rsyncable -f -k -n -9
 BROTLI  := brotli -f -k -n
 
-CSS_SRC    := $(sort $(wildcard src/*.css))
+CSS_SRC    := $(sort $(wildcard src/*.scss))
 
-CSS_ASSETS := $(addprefix dist/,$(notdir $(CSS_SRC))) docs/dist.css
+CSS_ASSETS := $(addprefix dist/,$(addsuffix .css,$(basename $(notdir $(CSS_SRC))))) docs/dist.css
 
 GZIP_ASSETS := $(addsuffix .gz,$(CSS_ASSETS))
 
 BROTLI_ASSETS := $(addsuffix .br,$(CSS_ASSETS))
 
 help:
+	@echo $(CSS_ASSETS)
 	@echo "Targets:"
 	@echo
 	@echo "  dist   Create/update dist/ and docs/"
@@ -36,7 +37,7 @@ watch:	dist
 	+@while true; do $(FWAIT) $(CSS_SRC) ; nice make --no-print-directory dist; echo "Up to date."; done
 
 # Pessimistic by design: rebuilds all assets whenever any source changes.
-dist/%.css:	src/%.css $(CSS_SRC)
+dist/%.css:	src/%.scss $(CSS_SRC)
 	$(POSTCSS) $< -o $@
 
 docs/dist.css:	docs/style.css $(CSS_SRC)

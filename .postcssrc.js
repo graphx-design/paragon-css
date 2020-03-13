@@ -1,4 +1,5 @@
 module.exports = {
+	syntax: 'postcss-scss',
 	map: {
 		inline: false,
 		sourcesContent: true,
@@ -7,9 +8,7 @@ module.exports = {
 		require('postcss-import')({
 			path: ['./src/'],
 		}),
-		require('postcss-custom-properties')({
-			preserve: false,
-		}),
+		require('postcss-advanced-variables')({}),
 		require('cssnano')({
 			preset: 'default',
 		}),

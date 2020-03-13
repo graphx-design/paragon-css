@@ -1,0 +1,97 @@
+$small-radius: 0.2em;
+
+$padding-relaxed: 1.5rem;
+$padding-spaced: 0.75rem;
+$padding-seamless: 0;
+
+/* NOTE: "px" in media queries is subject to a "device pixel ratio" for higher
+ * density screens.  The following assumptions are thus the norm:
+ *
+ *   <768px - Mobile (portrait)
+ *   <992px - Tablet (a.k.a. mobile landscape)
+ *  >=992px - Desktop
+ * >=1200px - Large Desktop (occasionally useful)
+ *
+ * "Touch" is inferred as "tablet-down" or the presence of the CSS 4
+ * "pointer:coarse" if the browser understands it.
+ */
+
+@mixin media-touch {
+	@media only screen and (max-width: 991px),
+		only screen and (pointer: coarse) {
+		@content;
+	}
+}
+
+@mixin media-mobile-only {
+	@media only screen and (max-width: 767px) {
+		@content;
+	}
+}
+
+@mixin media-tablet-down {
+	@media only screen and (max-width: 991px) {
+		@content;
+	}
+}
+
+@mixin media-tablet-only {
+	@media only screen and (min-width: 768px) and (max-width: 991px) {
+		@content;
+	}
+}
+
+@mixin media-desktop-only {
+	@media only screen and (min-width: 992px) {
+		@content;
+	}
+}
+
+@mixin media-desktop-small {
+	@media only screen and (min-width: 992px) and (max-width: 1199px) {
+		@content;
+	}
+}
+
+@mixin media-desktop-large {
+	@media only screen and (min-width: 1200px) {
+		@content;
+	}
+}
+
+@mixin grid-xx($cols: 10, $cols_2: 4, $cols_4: 2) {
+	/* Widths */
+	@for $i from 1 through $cols {
+		.pgn-row-$cols > .pgn-col-$i {
+			width: calc($i * 100% / $cols);
+		}
+	}
+
+	@include media-mobile-only {
+		/* Quadruple desktop widths */
+		.pgn-doubling .pgn-row-$cols > [class*="pgn-col-"],
+		.pgn-doubling.pgn-row-$cols > [class*="pgn-col-"] {
+			width: 100%;
+		}
+		@for $i from 1 through $cols_4 {
+			.pgn-doubling .pgn-row-$cols > .pgn-col-$i,
+			.pgn-doubling.pgn-row-$cols > .pgn-col-$i {
+				width: calc(4 * $i * 100% / $cols);
+			}
+		}
+	}
+
+	@include media-tablet-only {
+		/* Double desktop widths */
+		.pgn-doubling .pgn-row-$cols > [class*="pgn-col-"],
+		.pgn-doubling.pgn-row-$cols > [class*="pgn-col-"] {
+			width: 100%;
+		}
+		@for $i from 1 through $cols_2 {
+			.pgn-doubling .pgn-row-$cols > .pgn-col-$i,
+			.pgn-doubling.pgn-row-$cols > .pgn-col-$i {
+				width: calc(2 * $i * 100% / $cols);
+			}
+		}
+	}
+}

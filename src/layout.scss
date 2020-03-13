@@ -1,3 +1,5 @@
+@import "_lib.scss";
+
 /* Layout 3: header, main (expands), footer */
 body.pgn-l-3 {
 	display: flex;
@@ -11,8 +13,9 @@ body.pgn-l-3 {
 	display: block;
 	max-width: 100%;
 	width: auto;
-	margin-left: 0.75rem;
-	margin-right: 0.75rem;
+	/* FIXME: Should depend on relaxed/spaced/seamless parent instead? */
+	margin-left: $padding-spaced;
+	margin-right: $padding-spaced;
 }
 
 .pgn-block {
@@ -20,10 +23,7 @@ body.pgn-l-3 {
 	width: 100%;
 }
 
-/* NOTE: In media queries, "px" is subject to "device pixel ratio" for higher density screens. */
-
-/* Mobile */
-@media only screen and (max-width: 767px) {
+@include media-mobile-only {
 	.pgn-tablet-up,
 	.pgn-tablet-only,
 	.pgn-desktop-only {
@@ -31,16 +31,14 @@ body.pgn-l-3 {
 	}
 }
 
-/* Tablet */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@include media-tablet-only {
 	.pgn-mobile-only,
 	.pgn-desktop-only {
 		display: none;
 	}
 }
 
-/* Desktops of all sizes */
-@media only screen and (min-width: 992px) {
+@include media-desktop-only {
 	.pgn-mobile-only,
 	.pgn-tablet-only,
 	.pgn-tablet-down {
@@ -48,12 +46,7 @@ body.pgn-l-3 {
 	}
 }
 
-/* Desktops, small */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-}
-
-/* Desktops, large */
-@media only screen and (min-width: 1200px) {
+@include media-desktop-large {
 	.pgn-container {
 		width: 1127px;
 		margin-left: auto;
