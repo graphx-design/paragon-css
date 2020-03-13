@@ -80,3 +80,8 @@ dd code {
 .pgn-icon-button {
 	font-weight: bold;
 }
+
+table thead th {
+	background-color: #eee;
+	color: #333;
+}
