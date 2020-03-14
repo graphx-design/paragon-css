@@ -2,9 +2,10 @@
 	<head>
 		<title>Paragon CSS Framework</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preload" href="dist.css" as="style">
 		<link rel="stylesheet" type="text/css" href="dist.css">
 	</head>
-	<body class="pgn-sans pgn-l-3">
+	<body onload="setTimeout(function(){document.body.classList.add('loaded')})" class="pgn-sans pgn-l-3">
 		<header class="pgn-container">
 			<h1 style="display:inline-block">Paragon CSS Framework</h1>
 		</header>
@@ -15,7 +16,11 @@
 				<section>
 					<h2>Introduction</h2>
 					<p>
-					TODO: motivation, our internal use
+					There are already plenty of CSS frameworks, with varying levels of complexity.  This one grew out of necessity
+					for our corporate web site.  It is inspired by the likes of <a href="https://purecss.io/">Pure CSS</a>, and it
+					is indeed pure CSS as well, but with our own visual take on the elements we need.  It strays from the "paper"
+					trend of the likes of Material Design, in favor of a stronger and more classic identification of interactive
+					elements.
 					</p>
 					<p>
 					Almost all classes begin with the prefix <code>pgn-</code> to prevent collisions with other frameworks.  For
@@ -23,8 +28,9 @@
 					<code>has-<em>something</em></code> and <code>size-<em>something</em></code>.
 					</p>
 					<p>
-					Compiled CSS files are located in <code>dist/</code>.  You may use <code>all.css</code> to get the entire framework
-					at once, or any of the individual files described below.  Be sure to import them in order to avoid priority side-effects.
+					Compiled CSS files are located in <code>dist/</code>.  You may use <code>all.css</code> to get the entire
+					framework at once, or just some of the individual files described below.  Be sure to import
+					<code>core.css</code> first in order to avoid priority side-effects.
 					</p>
 				</section>
 				<section>
@@ -33,25 +39,32 @@
 						<thead>
 							<tr>
 								<th>File</th>
-								<th>Compiled</th>
+								<th>Size</th>
 								<th>Gzipped</th>
 								<th>Brotli</th>
 							</tr>
 						</thead>
 						<tbody>
-<tr><td>all.css</td><td>10.2KB</td><td>2.5KB</td><td>2.1KB</td></tr>
+<tr><td>all.css</td><td>10.7KB</td><td>2.7KB</td><td>2.2KB</td></tr>
+<tr><td>core.css</td><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
 <tr><td>forms.css</td><td>2.9KB</td><td>0.8KB</td><td>0.7KB</td></tr>
 <tr><td>grid-10.css</td><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>grid-24.css</td><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
 <tr><td>grid.css</td><td>0.5KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>layout.css</td><td>0.9KB</td><td>0.4KB</td><td>0.3KB</td></tr>
-<tr><td>reset.css</td><td>1.9KB</td><td>0.8KB</td><td>0.6KB</td></tr>
-<tr><td>typography.css</td><td>0.8KB</td><td>0.4KB</td><td>0.4KB</td></tr>
+<tr><td>tables.css</td><td>0.0KB</td><td>0.1KB</td><td>0.0KB</td></tr>
+<tr><td>transitions.css</td><td>0.4KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 </tbody>
 					</table>
 				</section>
 				<section>
 					<h3>Browser Support</h3>
+					<p>
+					In addition to all currently supported browsers, including "long term support" versions, in order to support our
+					enterprise environments we're supporting Microsoft Internet Explorer 11.  This does not incur any significant
+					cost, except that our design avoids the use of CSS variables, <code>calc()</code>, <code>mix-blend-mode</code>
+					and <code>filter()</code>.  We intend to refactor to make use of these features when we'll drop IE11 support.
+					</p>
 					<dl>
 						<dt>Chrome</dt><dd>63 (2017)</dd>
 						<dt>Safari</dt><dd>11 (2017)</dd>
@@ -65,21 +78,17 @@
 
 
 			<section>
-				<h2>Reset <code>reset.css</code></h2>
+				<h2>Core <code>core.css</code></h2>
 				<p>
 				Minimal, non-opinionated reset to help normalize output across browsers.
 				</p>
-			</section>
-
-
-			<section>
-				<h2>Typography <code>typography.css</code></h2>
+				<h3>Typography</h3>
 				<dl>
 					<dt><code>.pgn-mono</code></dt>
 					<dd>System and user-preferred monospace font families (automatically applied to <code class="html-tag">code</code>, <code class="html-tag">kbd</code>, <code class="html-tag">pre</code>, <code class="html-tag">samp</code>)</dd>
 
 					<dt><code>.pgn-sans</code></dt>
-					<dd>System and user-preferred sans-serif font families</dd>
+					<dd>System and user-preferred sans-serif font families (automatically applied to <code>.pgn-form</code> buttons and inputs)</dd>
 
 					<dt><code>.pgn-serif</code></dt>
 					<dd>System and user-preferred serif font families</dd>
@@ -124,21 +133,19 @@
 					</p>
 				</section>
 				<section>
-					<h3>Header/Main/Footer Layout <code>.pgn-l-3</code></h3>
+					<h3>Layouts <code>.pgn-l-*</code></h3>
 					<p>
-					TODO: Description, clean up example
+					Applicable to any container block, including <code class="html-tag">body</code>.
 					</p>
-					<div class="box">
-						<div class="box">
-							Header block
-						</div>
-						<div class="box">
-							<code>.pgn-stretch</code> main block
-						</div>
-						<div class="box">
-							Footer block (stays at document bottom but never above viewport bottom)
-						</div>
-					</div>
+					<dl>
+
+						<dt><code>.pgn-l-3</code></dt>
+						<dd>
+						3 children, stacked vertically. The middle child expands as necessary to make sure that the third child
+						is always no higher than the bottom of the viewport.  Typical header-main-footer layout.
+						</dd>
+
+					</dl>
 				</section>
 			</section>
 
@@ -263,6 +270,10 @@
 					<p>TODO</p>
 				</section>
 				<section>
+					<h3>Field sets</h3>
+					<p>TODO</p>
+				</section>
+				<section>
 					<h3>Checkboxes <code>.pgn-form label input[type=checkbox]</code></h3>
 					<p>TODO</p>
 				</section>
@@ -325,9 +336,47 @@
 			</section>
 
 
+			<section>
+				<h2>Tables <code>tables.css</code></h2>
+				<p>
+				TODO
+				</p>
+			</section>
+
+
+			<section>
+				<h2>Transitions <code>transitions.css</code></h2>
+				<p>
+				To guarantee that no browsers "flash" transitions on load, some rules depend on a parent having the "loaded" class.
+				To use them, add the <code>loaded</code> class to <code class="html-tag">body</code> after the first paint is likely
+				over. In some browsers, a simple "onload" is insufficient, thus:
+				</p>
+				<blockquote><code>
+&lt;body onload="setTimeout(function(){document.body.classList.add('loaded')})"&gt;
+				</code></blockquote>
+				<section>
+					<h3>Generic</h3>
+					<dl>
+
+						<dt><code>.loaded, .loaded *</code></dt>
+						<dd>
+						Subtle fade for <code>color</code>, <code>background-color</code> and <code>opacity</code>.
+						</dd>
+
+						<dt><code>.pgn-go-hidden</code>, <code>.pgn-go-visible</code></dt>
+						<dd>
+						Fade in/out of <code>opacity</code>.  Only useful in scripts because they are mutually exclusive.
+						</dd>
+
+						<dt>TODO</dt>
+						<dd>
+						Slide in/out from one of the 4 sides
+						</dd>
+					</dl>
+				</section>
+			</section>
+
+
 		</main>
-		<footer>
-			<div>This is a DIV in the FOOTER!</div>
-		</footer>
 	</body>
 </html>

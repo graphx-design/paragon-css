@@ -1,7 +1,7 @@
 @import "_lib.scss";
 
-/* Layout 3: header, main (expands), footer */
-body.pgn-l-3 {
+/* Layout 3: header, main (expands), footer, typically on <body> */
+.pgn-l-3 {
 	display: flex;
 	flex-direction: column;
 }

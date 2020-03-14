@@ -1,7 +1,12 @@
 @import "all.scss";
 
-h2 {
+h1,
+h2,
+h3 {
 	color: #444;
+}
+
+h2 {
 	border-bottom: 1px solid #444;
 	margin-top: 3rem;
 	margin-bottom: 1rem;
@@ -26,7 +31,6 @@ h2 code:after {
 }
 
 h3 {
-	color: #444;
 	margin-top: 2rem;
 	margin-bottom: 1rem;
 }
@@ -50,6 +54,17 @@ dd code {
 	background-color: #eee;
 }
 
+blockquote {
+	margin-left: 3em;
+	margin-right: 3em;
+}
+
+table thead th,
+dt {
+	background-color: #eee;
+	color: #333;
+}
+
 dl {
 	display: grid;
 	grid-template-columns: max-content auto;
@@ -63,8 +78,6 @@ dt {
 	grid-column-start: 1;
 	font-weight: bold;
 	text-align: right;
-	background-color: #eee;
-	color: #333;
 }
 dd code {
 	/* margin-right: 2em; */
@@ -79,9 +92,4 @@ dd code {
 
 .pgn-icon-button {
 	font-weight: bold;
-}
-
-table thead th {
-	background-color: #eee;
-	color: #333;
 }

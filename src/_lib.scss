@@ -4,6 +4,34 @@ $padding-relaxed: 1.5rem;
 $padding-spaced: 0.75rem;
 $padding-seamless: 0;
 
+/* System UI font stacks
+ *
+ * Inspiration:
+ *   https://systemfontstack.com/
+ *   Bootstrap 4 Reboot
+ *   GitHub
+ *   Medium
+ *
+ * Non-system fonts which are clearly user installed are listed early in the list (i.e. Fira Code) as they usually indicate an
+ * implicit user preference.
+ */
+
+$font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+	"Noto Color Emoji";
+
+$font-mono: "Fira Code", "Hack", "Hasklig", "Monoid", "Source Code Pro",
+	"JetBrains Mono", "Cascadia Code", "SFMono-Regular", "SF Mono", Menlo,
+	Monaco, Inconsolata, "Fira Mono", "Roboto Mono", "Droid Sans Mono", Consolas,
+	"Liberation Mono", "Lucida Console", "Courier New", monospace, $font-emoji;
+
+$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+	Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
+	Helvetica, sans-serif, $font-emoji;
+
+$font-serif: "Iowan Old Style", "Apple Garamond", "Baskerville",
+	"Times New Roman", "Droid Serif", Times, "Source Serif Pro", serif,
+	$font-emoji;
+
 /* NOTE: "px" in media queries is subject to a "device pixel ratio" for higher
  * density screens.  The following assumptions are thus the norm:
  *

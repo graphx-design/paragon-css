@@ -1,0 +1,40 @@
+@import "_lib.scss";
+
+.loaded,
+.loaded * {
+	transition: color 0.25s 0.05s, background-color 0.25s 0.05s, opacity 0.5s;
+}
+
+[class*="pgn-go-"] {
+	animation-iteration-count: 1;
+	animation-duration: 300ms;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+	backface-visibility: hidden;
+}
+
+.pgn-go-hidden {
+	animation-name: fade-out;
+}
+
+.pgn-go-visible {
+	animation-name: fade-in;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

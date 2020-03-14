@@ -1,8 +1,4 @@
-/* Fresh start */
-@import "reset.scss";
-
-/* System and user-preferred fonts */
-@import "typography.scss";
+@import "core.scss";
 
 /* Layout & Grid */
 @import "layout.scss";
@@ -12,3 +8,7 @@
 
 /* Components */
 @import "forms.scss";
+@import "tables.scss";
+
+/* Transitions */
+@import "transitions.scss";
