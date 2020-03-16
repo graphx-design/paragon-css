@@ -13,5 +13,8 @@ module.exports = {
 			preset: 'default',
 		}),
 		require('postcss-combine-media-query')({}),
+		require('postcss-assets')({
+			loadPaths: ['./src/'],
+		}),
 	],
 };

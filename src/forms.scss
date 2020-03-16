@@ -8,7 +8,8 @@
 .pgn-form textarea:focus,
 .pgn-button:focus,
 .pgn-button.is-secondary:focus,
-.pgn-icon-button.pgn-icon-button:focus {
+.pgn-icon-button.pgn-icon-button:focus,
+.pgn-form label input[type="checkbox"]:focus ~ .pgn-label::before {
 	box-shadow: inset 0 0 0 1px rgba(96, 96, 96, 0.14),
 		inset 0 -1px 1px 0 rgba(96, 96, 96, 0.06),
 		0 0 0.33em 1px rgba(8, 112, 240, 0.5);
@@ -167,12 +168,63 @@
 	width: 100%;
 }
 
+.pgn-form label {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.pgn-density-spaced .pgn-label {
+	margin-right: $padding-spaced;
+}
+.pgn-density-relaxed .pgn-label {
+	margin-right: $padding-relaxed;
+}
+
+/* Checkbox */
+.pgn-form label input[type="checkbox"] {
+	position: absolute;
+	left: -9999px;
+}
+.pgn-form label input[type="checkbox"] + .pgn-label {
+	display: block;
+	position: relative;
+	margin-left: 2em;
+}
+.pgn-form label input[type="checkbox"] + .pgn-label::before {
+	user-select: none;
+	display: block;
+	position: absolute;
+	left: -2em;
+	width: 1.33em;
+	height: 1.33em;
+	border: 1px solid #333;
+	border-radius: $tiny-radius;
+	background-size: cover;
+	background-color: #fff;
+	content: "";
+	padding: 0.1em;
+}
+.pgn-form label input[type="checkbox"]:checked + .pgn-label::before {
+	background-color: #333;
+	background-image: inline("icon-check-white.svg");
+}
+
+.pgn-form label input[type="checkbox"]:disabled + .pgn-label {
+	color: #888;
+}
+.pgn-form label input[type="checkbox"]:disabled + .pgn-label::before {
+	background-color: #888;
+	border-color: #888;
+	cursor: not-allowed;
+	cursor: no-drop;
+}
+
 /*
  * file
  *
  * image
  *
- * checkbox
  * radio
  *
  * color
@@ -194,8 +246,16 @@
 	.pgn-icon-button,
 	.pgn-form input[type="submit"],
 	.pgn-form input[type="reset"],
-	.pgn-form input[type="button"] {
+	.pgn-form input[type="button"],
+	.pgn-form label input[type="checkbox"] + .pgn-label::before {
 		min-width: 10mm;
 		min-height: 10mm;
+	}
+	.pgn-form label input[type="checkbox"] + .pgn-label::before {
+		border-width: 2px;
+		left: -3em;
+	}
+	.pgn-form label input[type="checkbox"] + .pgn-label {
+		margin-left: 3em;
 	}
 }

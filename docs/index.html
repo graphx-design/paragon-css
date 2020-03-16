@@ -2,10 +2,9 @@
 	<head>
 		<title>Paragon CSS Framework</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="preload" href="dist.css" as="style">
 		<link rel="stylesheet" type="text/css" href="dist.css">
 	</head>
-	<body onload="setTimeout(function(){document.body.classList.add('loaded')})" class="pgn-sans pgn-l-3">
+	<body onload="setTimeout(function(){document.body.classList.add('loaded')})" class="pgn-sans">
 		<header class="pgn-container">
 			<h1 style="display:inline-block">Paragon CSS Framework</h1>
 		</header>
@@ -16,11 +15,9 @@
 				<section>
 					<h2>Introduction</h2>
 					<p>
-					There are already plenty of CSS frameworks, with varying levels of complexity.  This one grew out of necessity
-					for our corporate web site.  It is inspired by the likes of <a href="https://purecss.io/">Pure CSS</a>, and it
-					is indeed pure CSS as well, but with our own visual take on the elements we need.  It strays from the "paper"
-					trend of the likes of Material Design, in favor of a stronger and more classic identification of interactive
-					elements.
+					There are already plenty of CSS frameworks, with varying levels of complexity.  This one takes the Occam's Razor
+					approach: it is minuscule, restricted to pure CSS.  It strays from the extreme simplicity of the flat layered
+					"paper" trend, in favor of more classic visual cues enhanced to use modern browser capabilities.
 					</p>
 					<p>
 					Almost all classes begin with the prefix <code>pgn-</code> to prevent collisions with other frameworks.  For
@@ -34,7 +31,10 @@
 					</p>
 				</section>
 				<section>
-					<h3>Tiny</h3>
+					<h3>Efficient</h3>
+					<p>
+					The entire framework (<code>all.css</code>) is smaller than a typical company logo image:
+					</p>
 					<table class="pgn-density-spaced">
 						<thead>
 							<tr>
@@ -45,9 +45,9 @@
 							</tr>
 						</thead>
 						<tbody>
-<tr><td>all.css</td><td>10.7KB</td><td>2.7KB</td><td>2.2KB</td></tr>
+<tr><td>all.css</td><td>12.4KB</td><td>3.2KB</td><td>2.7KB</td></tr>
 <tr><td>core.css</td><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
-<tr><td>forms.css</td><td>2.9KB</td><td>0.8KB</td><td>0.7KB</td></tr>
+<tr><td>forms.css</td><td>4.6KB</td><td>1.4KB</td><td>1.2KB</td></tr>
 <tr><td>grid-10.css</td><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>grid-24.css</td><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
 <tr><td>grid.css</td><td>0.5KB</td><td>0.3KB</td><td>0.2KB</td></tr>
@@ -82,17 +82,45 @@
 				<p>
 				Minimal, non-opinionated reset to help normalize output across browsers.
 				</p>
-				<h3>Typography</h3>
-				<dl>
-					<dt><code>.pgn-mono</code></dt>
-					<dd>System and user-preferred monospace font families (automatically applied to <code class="html-tag">code</code>, <code class="html-tag">kbd</code>, <code class="html-tag">pre</code>, <code class="html-tag">samp</code>)</dd>
+				<section>
+					<h3>Typography</h3>
+					<dl>
+						<dt><code>.pgn-mono</code></dt>
+						<dd>System and user-preferred monospace font families (automatically applied to <code class="html-tag">code</code>, <code class="html-tag">kbd</code>, <code class="html-tag">pre</code>, <code class="html-tag">samp</code>)</dd>
 
-					<dt><code>.pgn-sans</code></dt>
-					<dd>System and user-preferred sans-serif font families (automatically applied to <code>.pgn-form</code> buttons and inputs)</dd>
+						<dt><code>.pgn-sans</code></dt>
+						<dd>System and user-preferred sans-serif font families (automatically applied to <code>.pgn-form</code> buttons and inputs)</dd>
 
-					<dt><code>.pgn-serif</code></dt>
-					<dd>System and user-preferred serif font families</dd>
-				</dl>
+						<dt><code>.pgn-serif</code></dt>
+						<dd>System and user-preferred serif font families</dd>
+					</dl>
+				</section>
+				<section>
+					<h3>Density</h3>
+					<p>
+					Three classes as parents (immediate or not) are recognized by various modules as indicative of spacing to use
+					between items.  The least relaxed has the highest priority.  For example, grids recognize them as padding:
+					</p>
+					<div class="pgn-row-24">
+						<div class="pgn-col-8" style="border:none">
+							<div class="pgn-row-10 pgn-density-seamless"><div class="pgn-col-10">
+					<code>.pgn-density-seamless</code>
+							</div></div>
+						</div>
+						<div class="pgn-col-8" style="border:none">
+							<div class="pgn-row-10 pgn-density-spaced"><div class="pgn-col-10">
+					<code>.pgn-density-spaced</code>
+							</div></div>
+						</div>
+						<div class="pgn-col-8" style="border:none">
+							<div class="pgn-row-10 pgn-density-relaxed"><div class="pgn-col-10">
+									<code>.pgn-density-relaxed</code>
+							</div></div>
+						</div>
+					</div>
+				</section>
+
+
 			</section>
 
 
@@ -158,9 +186,9 @@
 				2, 3, 4, 5, 6, 8, 10, 12 and 24.
 				</p>
 				<p>
-				There is no mandatory grid container.  Rows are <code>.pgn-row-10</code> or <code>.pgn-row-24</code> according to
-				whether you want the row to be divided in 10<sup>ths</sup> or 24<sup>ths</sup>.  Columns are <code>.pgn-col-X</code>
-				where <code></code> is the multiple width.
+				Rows are <code>.pgn-row-10</code> or <code>.pgn-row-24</code> according to whether you want the row to be divided in
+				10<sup>ths</sup> or 24<sup>ths</sup>.  Columns are <code>.pgn-col-X</code> where <code>X</code> is the multiple
+				width.
 				</p>
 				<p>
 				<code>.pgn-col-*</code> padding is sensitive to <code>.pgn-density-*</code> higher in the DOM tree
@@ -216,32 +244,6 @@
 
 
 				<section>
-					<h3>Density</h3>
-					<p>
-					Three classes to be parents (immediate or not) of grid cells are specified from most to least relaxed, so the
-					least relaxed wins.
-					</p>
-					<div class="pgn-row-24">
-						<div class="pgn-col-8" style="border:none">
-							<div class="pgn-row-10 pgn-density-seamless"><div class="pgn-col-10">
-					<code>.pgn-density-seamless .pgn-col-*</code>
-							</div></div>
-						</div>
-						<div class="pgn-col-8" style="border:none">
-							<div class="pgn-row-10 pgn-density-spaced"><div class="pgn-col-10">
-					<code>.pgn-density-spaced .pgn-col-*</code>
-							</div></div>
-						</div>
-						<div class="pgn-col-8" style="border:none">
-							<div class="pgn-row-10 pgn-density-relaxed"><div class="pgn-col-10">
-									<code>.pgn-density-relaxed .pgn-col-*</code>
-							</div></div>
-						</div>
-					</div>
-				</section>
-
-
-				<section>
 					<h3>Responsive</h3>
 					<dl>
 						<dt><code>.pgn-doubling .pgn-col-*</code></dt>
@@ -274,11 +276,28 @@
 					<p>TODO</p>
 				</section>
 				<section>
-					<h3>Checkboxes <code>.pgn-form label input[type=checkbox]</code></h3>
-					<p>TODO</p>
+					<h3>Checkboxes <code>.pgn-form label input[type=checkbox] + .pgn-label</code></h3>
+					<form class="pgn-form pgn-density-spaced">
+						<label style="max-width: 15em">
+							<input type="checkbox" name="cb" value="1" checked>
+							<span class="pgn-label">Something long wraps on label's width</span>
+						</label>
+						<label>
+							<input type="checkbox" name="cb" value="1" disabled checked>
+							<span class="pgn-label">Disabled</span>
+						</label>
+						<label style="font-size:75%">
+							<input type="checkbox" name="cb" value="1" checked>
+							<span class="pgn-label">Adapts to label's font size</span>
+						</label>
+						<label style="padding:4px;background-color:orange;color:white;">
+							<input type="checkbox" name="cb" value="1" checked>
+							<span class="pgn-label">Ignores label colors</span>
+						</label>
+					</form>
 				</section>
 				<section>
-					<h3>Radio checkboxes <code>.pgn-form label input[type=radio]</code></h3>
+					<h3>Radio selections <code>.pgn-form label input[type=radio]</code></h3>
 					<p>TODO</p>
 				</section>
 				<section>
