@@ -1,2 +1,87 @@
-/* TODO */
+@import "_lib.scss";
 
+.pgn-table {
+	position: relative;
+	border-collapse: collapse;
+}
+
+.pgn-table th {
+	background-color: rgba(127, 127, 127, 0.2);
+}
+
+table.pgn-stick-vertical thead tr > th,
+table.pgn-stick-vertical tfoot tr > th {
+	background-color: #ddd; /* sticky -> no alpha */
+	position: sticky;
+	top: -1px; /* Compensate vanishing border */
+	z-index: 10;
+	transition: none;
+}
+
+table.pgn-stick-horizontal tr > th:first-child {
+	background-color: #ddd; /* sticky -> no alpha */
+	position: sticky;
+	left: 0;
+	z-index: 11;
+	transition: none;
+}
+
+table.pgn-stick-horizontal thead tr > th:first-child,
+table.pgn-stick-horizontal tfoot tr > th:first-child {
+	z-index: 12;
+}
+
+.pgn-table.pgn-striped tbody tr:nth-child(even) > td {
+	background-color: rgba(127, 127, 127, 0.05);
+}
+
+.pgn-table tr > * {
+	text-align: left;
+}
+.pgn-table.pgn-horizontal tbody tr > * {
+	border-bottom: 1px solid rgba(127, 127, 127, 0.33);
+}
+.pgn-table.pgn-gridded tr > * {
+	border: 1px solid rgba(127, 127, 127, 0.33);
+}
+
+@for $i from 1 through 12 {
+	.pgn-center-$i > tr > :nth-child($i) {
+		text-align: center;
+	}
+}
+
+.pgn-table tr > .is-numeric {
+	text-align: right;
+}
+.pgn-density-relaxed tr > * {
+	padding: calc($padding-relaxed / 2) $padding-relaxed;
+}
+.pgn-density-spaced tr > * {
+	padding: calc($padding-spaced / 2) $padding-spaced;
+	font-size: 90%;
+}
+.pgn-density-seamless tr > * {
+	padding: $padding-seamless;
+	font-size: 90%;
+}
+
+.pgn-table.pgn-2d thead tr > *:first-child {
+	border: none;
+	background: transparent;
+}
+
+@include media-mobile-only {
+	.pgn-table.pgn-stacking {
+		width: 100%;
+	}
+	.pgn-table.pgn-stacking tbody tr {
+		border-bottom: 2px solid rgba(127, 127, 127, 0.33);
+	}
+	.pgn-table.pgn-stacking.pgn-stacking th,
+	.pgn-table.pgn-stacking.pgn-stacking td {
+		width: auto;
+		display: block;
+		border: none;
+	}
+}

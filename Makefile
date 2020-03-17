@@ -46,6 +46,7 @@ docs/dist.css:	docs/style.css $(CSS_SRC)
 	$(POSTCSS) $< -o $@
 
 sizes:	full
+	@if [ -e docs/index.html~ ]; then echo "HTML backup file already exists."; exit 1; fi
 	@echo -n >docs/_sizes.html
 	@for F in $(CSS_SIZABLE); do \
 		echo -n "<tr><td>$$F</td><td>" >>docs/_sizes.html ; \
@@ -56,12 +57,12 @@ sizes:	full
 		printf '%.1f' $$((1000 * `stat --printf='%s' "dist/$$F.br"` / 1024))e-3 >>docs/_sizes.html ; \
 		echo "KB</td></tr>" >>docs/_sizes.html ; \
 	done
-	@mv -f docs/index.html docs/index.html~
+	@mv -b docs/index.html docs/index.html~
 	@cat docs/index.html~ \
 		|tr "\n" '~' \
-		|sed -re 's/<tbody>.*<\/tbody>/<tbody>~<\/tbody>/' \
+		|sed -re 's/<!-- BEGIN SIZES -->.*<!-- END SIZES -->/<!-- BEGIN SIZES -->~<!-- END SIZES -->/' \
 		|tr '~' "\n" \
-		|sed -e '/<tbody>/{0,//rdocs/_sizes.html' -e '}' \
+		|sed -e '/<!-- BEGIN SIZES -->/{0,//rdocs/_sizes.html' -e '}' \
 		>docs/index.html
 	@rm -f docs/_sizes.html
 

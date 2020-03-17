@@ -38,6 +38,10 @@ menu {
 summary {
 	display: list-item;
 }
+ul,
+ol {
+	margin-left: 2em;
+}
 
 /* Forms */
 input[type="text"],
@@ -105,12 +109,26 @@ h1 {
 	font-size: 2em;
 	margin: 0.67em 0;
 }
-pre,
+.pgn-form button,
+.pgn-form input,
+.pgn-form textarea,
+.pgn-button,
+.pgn-sans {
+	font-family: $font-sans;
+}
+.pgn-serif {
+	font-family: $font-serif;
+}
 code,
 kbd,
+pre,
 samp {
-	font-family: monospace, monospace;
+	font-family: $font-mono;
 	font-size: 1em;
+}
+.pgn-mono,
+.is-numeric {
+	font-family: $font-mono;
 }
 a {
 	-webkit-text-decoration-skip: objects;
@@ -156,25 +174,4 @@ template {
 p,
 blockquote {
 	margin-bottom: 0.75em;
-}
-
-/* Typography */
-code,
-kbd,
-pre,
-samp,
-.pgn-mono {
-	font-family: $font-mono;
-}
-
-.pgn-form button,
-.pgn-form input,
-.pgn-form textarea,
-.pgn-button,
-.pgn-sans {
-	font-family: $font-sans;
-}
-
-.pgn-serif {
-	font-family: $font-serif;
 }

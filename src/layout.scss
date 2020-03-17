@@ -65,13 +65,3 @@
 		display: none;
 	}
 }
-
-.pgn-density-relaxed td {
-	padding: calc($padding-relaxed / 2) $padding-relaxed;
-}
-.pgn-density-spaced td {
-	padding: calc($padding-spaced / 2) $padding-spaced;
-}
-.pgn-density-seamless td {
-	padding: $padding-seamless;
-}

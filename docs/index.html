@@ -45,16 +45,18 @@
 							</tr>
 						</thead>
 						<tbody>
-<tr><td>all.css</td><td>12.4KB</td><td>3.2KB</td><td>2.7KB</td></tr>
+<!-- BEGIN SIZES -->
+<tr><td>all.css</td><td>13.9KB</td><td>3.5KB</td><td>3.0KB</td></tr>
 <tr><td>core.css</td><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
 <tr><td>forms.css</td><td>4.6KB</td><td>1.4KB</td><td>1.2KB</td></tr>
 <tr><td>grid-10.css</td><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>grid-24.css</td><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
 <tr><td>grid.css</td><td>0.5KB</td><td>0.3KB</td><td>0.2KB</td></tr>
-<tr><td>layout.css</td><td>0.9KB</td><td>0.4KB</td><td>0.3KB</td></tr>
-<tr><td>tables.css</td><td>0.0KB</td><td>0.1KB</td><td>0.0KB</td></tr>
+<tr><td>layout.css</td><td>0.8KB</td><td>0.3KB</td><td>0.2KB</td></tr>
+<tr><td>tables.css</td><td>1.7KB</td><td>0.6KB</td><td>0.4KB</td></tr>
 <tr><td>transitions.css</td><td>0.4KB</td><td>0.3KB</td><td>0.2KB</td></tr>
-</tbody>
+<!-- END SIZES -->
+						</tbody>
 					</table>
 				</section>
 				<section>
@@ -73,6 +75,20 @@
 						<dt>Opera</dt><dd>50 (2018, based on Chromium 63)</dd>
 						<dt>Internet Explorer</dt><dd>11 (2013)</dd>
 					</dl>
+				</section>
+				<section>
+					<h3>TODO</h3>
+					<p>
+					This is an early work-in-progress framework. Below are my ramblings so I don't forget anything. ;-)
+					</p>
+					<ul>
+						<li>Forms/Tables: error/warning/highlight/disabled states</li>
+						<li>Tables: pgn-density-compact smaller than spaced, default?</li>
+						<li>Tables: horizontal without outside borders, maybe not even TH grey, "simple"</li>
+						<li>Tables: how's vertical-align on multiline rows?</li>
+						<li>Tables: make a no-wrap column type, with and without truncation</li>
+						<li>Tables: guaranteed smallest cell: width:1px no-wrap</li>
+					</ul>
 				</section>
 			</section>
 
@@ -358,8 +374,99 @@
 			<section>
 				<h2>Tables <code>tables.css</code></h2>
 				<p>
-				TODO
+				Tables with <code>.pgn-table</code> are styled.
 				</p>
+				<div class="pgn-row-10">
+					<div class="pgn-col-5" style="border:none">
+						<table class="pgn-table pgn-density-spaced pgn-horizontal pgn-striped">
+							<thead>
+								<tr><th>First</th><th>Second</th><th>Third</th><th>Fourth</th></tr>
+							</thead>
+							<tbody class="pgn-center-3">
+								<tr><td>First</td><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+								<tr><td>First</td><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+								<tr><td>First</td><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+								<tr><td>First</td><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+								<tr><td>First</td><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="pgn-col-5" style="border:none">
+						<table class="pgn-table pgn-density-spaced pgn-gridded pgn-2d">
+							<thead>
+								<tr><th></th><th>Second</th><th>Third</th><th>Fourth</th></tr>
+							</thead>
+							<tbody class="pgn-center-3">
+								<tr><th>First</th><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+								<tr><th>First</th><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+								<tr><th>First</th><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+								<tr><th>First</th><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+								<tr><th>First</th><td class="is-numeric">2.22%</td><td>X</td><td>Fourth is longer as a test</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<section>
+					<h3>Options</h3>
+					<dl>
+
+						<dt>table.pgn-2d</dt>
+						<dd>
+						First column is a heading for each row, so hide first column of <code class="html-tag">thead</code> and
+						<code class="html-tag">tfoot</code>.
+						</dd>
+
+						<dt>table.pgn-horizontal</dt>
+						<dd>
+						Horizontal borders only.
+						</dd>
+
+						<dt>table.pgn-gridded</dt>
+						<dd>
+						Horizontal and vertical borders.
+						</dd>
+
+						<dt>table.pgn-striped</dt>
+						<dd>
+						Highlights every even row in the <code class="html-tag">tbody</code>.
+						</dd>
+
+						<dt>table.pgn-stacking</dt>
+						<dd>
+						Cells grow to full width on mobile (portrait) screens. No border between cells, just between rows.
+						</dd>
+
+						<dt>table.pgn-stick-vertical</dt>
+						<dd>
+						<code class="html-tag">thead</code> and <code class="html-tag">tfoot</code> (all <code
+							class="html-tag">th</code>) remain in viewport while the table is, except for IE11.
+						</dd>
+
+						<dt>table.pgn-stick-horizontal</dt>
+						<dd>
+						Left-most column (a <code class="html-tag">th</code>) is considered a header and remains in viewport while
+						the table is, except for IE11.
+						</dd>
+
+						<dt>tbody.pgn-center-*</dt>
+						<dd>
+						Center text in all rows, column <code>*</code>, maximum: 12.  (i.e. <code>.pgn-center-2</code> centers cells
+						in column 2.)
+						</dd>
+
+						<dt>th.is-numeric, td.is-numeric</dt>
+						<dd>
+						Right-justified cell.
+						</dd>
+
+						<dt>.pgn-density-*</dt>
+						<dd>
+						Tables respond to density with padding and font size.
+						</dd>
+
+					</dl>
+				</section>
+			</section>
 			</section>
 
 
