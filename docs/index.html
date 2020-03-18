@@ -46,14 +46,14 @@
 						</thead>
 						<tbody>
 <!-- BEGIN SIZES -->
-<tr><td>all.css</td><td>14.6KB</td><td>3.7KB</td><td>3.1KB</td></tr>
+<tr><td>all.css</td><td>15.1KB</td><td>3.7KB</td><td>3.2KB</td></tr>
 <tr><td>core.css</td><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
-<tr><td>forms.css</td><td>5.4KB</td><td>1.5KB</td><td>1.2KB</td></tr>
+<tr><td>forms.css</td><td>5.8KB</td><td>1.5KB</td><td>1.3KB</td></tr>
 <tr><td>grid-10.css</td><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>grid-24.css</td><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
 <tr><td>grid.css</td><td>0.5KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>layout.css</td><td>0.8KB</td><td>0.3KB</td><td>0.2KB</td></tr>
-<tr><td>tables.css</td><td>1.7KB</td><td>0.6KB</td><td>0.4KB</td></tr>
+<tr><td>tables.css</td><td>1.7KB</td><td>0.6KB</td><td>0.5KB</td></tr>
 <tr><td>transitions.css</td><td>0.4KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <!-- END SIZES -->
 						</tbody>
@@ -81,12 +81,19 @@
 					<p>
 					This is an early work-in-progress framework. Below are my ramblings so I don't forget anything. ;-)
 					</p>
+					<p>
+					Debate pros and cons of using <code>&lt;span class="pgn-*"&gt;...&lt;/span&gt;</code>vs <code>&lt;pgn-*&gt;...&lt;/pgn-*&gt;</code> even for this non-JS part of our framework.
+					Pro-class: allows tagging other elements with the class, combining classes (i.e. perhaps a <code>&lt;main class="pgn-row-10"&gt;</code> is better than <code>&lt;main&gt;&lt;pgn-row _cols="10"&gt;</code> for the DOM)
+					Pro-tag: shorter
+					</p>
 					<ul>
-						<li>Forms: radio as buttongroup?</li>
+						<li>Forms: "help text" after a line break in its labels, but it should be opt-in (click? hover?)</li>
+						<li>Forms: "inline errors" at the bottom of labels or just under inputs. red circled 'i' + red message</li>
 						<li>Forms/Tables: error/warning/highlight/disabled states</li>
+						<li>Grid: mention that a "pgn-row-*" can contain multiple rows, as it wraps. it's only necessary to use several when we want explicit break points</li>
+						<li>Forms: better :checked transitions for checkbox/radio</li>
 						<li>Tables: pgn-density-compact smaller than spaced, default?</li>
 						<li>Tables: horizontal without outside borders, maybe not even TH grey, "simple"</li>
-						<li>Tables: how's vertical-align on multiline rows?</li>
 						<li>Tables: make a no-wrap column type, with and without truncation</li>
 						<li>Tables: guaranteed smallest cell: width:1px no-wrap</li>
 					</ul>
@@ -285,15 +292,24 @@
 				Note that buttons and input widgets with <code>:focus</code> get <code>z-index: 1000</code> in addition to a halo.
 				</p>
 				<section>
-					<h3>Fields <code>.pgn-field</code></h3>
-					<p>TODO</p>
+					<h3>Fields <code>label.pgn-field input + .pgn-label</code></h3>
+					<form class="pgn-form">
+						<label class="pgn-field">
+							<span class="pgn-label">Normal</span>
+							<input type="text" name="it001" value="User Input Here">
+						</label>
+						<label class="pgn-field">
+							<span class="pgn-label">Disabled</span>
+							<input type="text" name="it001" disabled value="User Input Here">
+						</label>
+					</form>
 				</section>
 				<section>
 					<h3>Field sets</h3>
 					<p>TODO</p>
 				</section>
 				<section>
-					<h3>Checkboxes <code>.pgn-form label input[type=checkbox] + .pgn-label</code></h3>
+					<h3>Checkboxes <code>label input[type=checkbox] + .pgn-label</code></h3>
 					<form class="pgn-form pgn-density-spaced">
 						<label style="max-width: 15em">
 							<input type="checkbox" name="cb" value="1" checked>
@@ -314,7 +330,13 @@
 					</form>
 				</section>
 				<section>
-					<h3>Radio selections <code>.pgn-form label input[type=radio] + .pgn-label</code></h3>
+					<h3>Radio selections <code>label input[type=radio] + .pgn-label</code></h3>
+					<p>
+					General rules of thumb: if there are between 3 and 5-7 options, a radio is probably the best input.  Stack
+					vertically if possible; space generously if horizontal.  For 2 options, a checkbox is clearer.  For more than
+					5-7 options, a select drop-down keeps the form cleaner.  Remember to always check a default option when
+					presenting a form's initial state.
+					</p>
 					<form class="pgn-form pgn-density-spaced">
 						<label>
 							<input type="radio" name="rd" value="1" checked>
@@ -333,6 +355,13 @@
 							<span class="pgn-label">Ignores label colors</span>
 						</label>
 					</form>
+				</section>
+				<section>
+					<h3>Drop-down menus <code>TODO</code></h3>
+					<p>
+					General rules of thumb: if there are no more than 5-7 options and the form has enough room, consider using radio
+					buttons, which have a lower cognitive load.
+					</p>
 				</section>
 				<section>
 					<h3>Buttons <code>.pgn-form button, .pgn-button</code></h3>

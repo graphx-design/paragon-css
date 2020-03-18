@@ -4,7 +4,7 @@
 
 .pgn-form button:focus,
 .pgn-form button.is-secondary:focus,
-.pgn-form input:focus,
+.pgn-form label input:focus,
 .pgn-form textarea:focus,
 .pgn-button:focus,
 .pgn-button.is-secondary:focus,
@@ -163,9 +163,33 @@
 	box-shadow: none;
 }
 
-/* Free-form input */
+/* Keyboard input field */
 /* Typically: textarea, input type=email|number|password|search|tel|text|url */
-.pgn-field {
+/* TODO: textarea */
+/* TODO: centralize/uniformize colors with rest of widgets */
+.pgn-form label.pgn-field input {
+	display: block;
+	outline: none;
+	border: 1px solid rgba(127, 127, 127, 0.75);
+	border-radius: 0.2em;
+	padding: 1.75em 0.5em 0.5em 0.5em;
+	background-color: #fff;
+}
+.pgn-form label.pgn-field input:disabled {
+	color: rgba(127, 127, 127, 0.75);
+	cursor: not-allowed;
+	cursor: no-drop;
+	background-color: rgba(127, 127, 127, 0.125);
+}
+.pgn-form label.pgn-field .pgn-label {
+	display: block;
+	font-size: 80%;
+	color: rgba(0, 0, 0, 0.67);
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0.625em;
+	border: 1px solid transparent;
 }
 
 [class*="pgn-col-"] > .pgn-field {
