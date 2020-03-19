@@ -21,7 +21,6 @@
 }
 
 /* Default margin */
-.pgn-form label,
 .pgn-form button,
 .pgn-button {
 	/* FIXME: should depend on density */
@@ -185,7 +184,8 @@
 /* Typically: textarea, input type=email|number|password|search|tel|text|url */
 /* TODO: textarea */
 /* TODO: centralize/uniformize colors with rest of widgets */
-.pgn-form label.pgn-field input {
+.pgn-form label.pgn-field input,
+.pgn-form label.pgn-field textarea {
 	display: block;
 	width: 100%;
 	outline: none;
@@ -194,7 +194,7 @@
 	padding: 1.75em 0.5em 0.5em 0.5em;
 	background-color: rgba(127, 127, 127, 0.02);
 }
-.pgn-form label.pgn-field input:disabled {
+.pgn-form label.pgn-field :disabled {
 	color: rgba(127, 127, 127, 0.75);
 	cursor: not-allowed;
 	cursor: no-drop;
@@ -209,6 +209,9 @@
 	left: 0;
 	padding: 0.625em;
 	border: 1px solid transparent;
+}
+.pgn-form label textarea {
+	height: 6em;
 }
 
 [class*="pgn-col-"] > .pgn-field {

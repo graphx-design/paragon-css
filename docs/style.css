@@ -88,3 +88,8 @@ dd code {
 .pgn-icon-button {
 	font-weight: bold;
 }
+
+.box {
+	display: block;
+	border: 1px solid #333;
+}

@@ -48,7 +48,7 @@
 <!-- BEGIN SIZES -->
 <tr><td>all.css</td><td>16.2KB</td><td>3.9KB</td><td>3.3KB</td></tr>
 <tr><td>core.css</td><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
-<tr><td>forms.css</td><td>6.5KB</td><td>1.7KB</td><td>1.4KB</td></tr>
+<tr><td>forms.css</td><td>6.6KB</td><td>1.7KB</td><td>1.4KB</td></tr>
 <tr><td>grid-10.css</td><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>grid-24.css</td><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
 <tr><td>grid.css</td><td>0.9KB</td><td>0.3KB</td><td>0.3KB</td></tr>
@@ -119,7 +119,6 @@
 					Three classes as parents (immediate or not) are recognized by various modules as indicative of spacing to use
 					between items.  The least relaxed has the highest priority.  For example, grids recognize them as padding:
 					</p>
-<style>.box{display:block; border:1px solid black;}</style>
 					<div class="pgn-row-24 pgn-density-seamless">
 						<div class="pgn-col-8"><code class="box">.pgn-density-seamless</code></div>
 						<div class="pgn-col-8"><code class="box">.pgn-density-seamless</code></div>
@@ -286,55 +285,63 @@
 				to the halo.
 				</p>
 				<section>
-					<h3>Fields <code>label.pgn-field input + .pgn-label</code></h3>
+					<h3>Fields <code>label.pgn-field .pgn-label + input|textarea</code></h3>
 					<p>
-					Typical input types for this class are: <code>email</code>, <code>number</code>, <code>password</code>,
-					<code>tel</code>, <code>text</code>, <code>url</code> and possibly <code>search</code>.
+					In addition to text areas, typical input types compatible with this class are: <code>email</code>,
+					<code>number</code>, <code>password</code>, <code>tel</code>, <code>text</code>, <code>url</code> and possibly
+					<code>search</code>.
 					Fields expand to fill their label's width, so a label may be or be inside a grid cell.
 					We implement <a href="https://uxmovement.com/forms/infield-top-aligned-labels-floating-labels/">infield top
 						aligned labels</a> for their clarity.
 					</p>
 					<form class="pgn-form pgn-row-10 pgn-density-spaced pgn-doubling">
-						<div class="pgn-col-3" style="border:none">
+						<div class="pgn-col-3">
 							<label class="pgn-field">
 								<span class="pgn-label">Normal</span>
 								<input type="text" name="it001" value="User Input Here">
 							</label>
 						</div>
-						<div class="pgn-col-5" style="border:none">
+						<div class="pgn-col-5">
 							<label class="pgn-field">
 								<span class="pgn-label">Disabled</span>
 								<input type="text" name="it002" disabled value="User Input Here">
 							</label>
 						</div>
-						<div class="pgn-col-2" style="border:none">
+						<div class="pgn-col-2">
 							<label class="pgn-field">
 								<span class="pgn-label">Normal</span>
 								<input type="text" name="it003" value="User Input Here">
+							</label>
+						</div>
+						<div class="pgn-col-3">
+							<label class="pgn-field">
+								<span class="pgn-label">Textarea</span>
+								<textarea name="ta">123, Main St.
+Test City, ZZ
+H0H 0H0</textarea>
 							</label>
 						</div>
 					</form>
 				</section>
 				<section>
 					<h3>Field sets</h3>
-					<p>TODO</p>
 				</section>
 				<section>
 					<h3>Checkboxes <code>label input[type=checkbox] + .pgn-label</code></h3>
-					<form class="pgn-form pgn-density-spaced">
-						<label style="max-width: 15em">
+					<form class="pgn-form pgn-row-24 pgn-doubling pgn-density-spaced">
+						<label class="pgn-col-6">
 							<input type="checkbox" name="cb" value="1" checked>
 							<span class="pgn-label">Something long wraps on label's width</span>
 						</label>
-						<label>
+						<label class="pgn-col-6">
 							<input type="checkbox" name="cb" value="1" disabled checked>
 							<span class="pgn-label">Disabled</span>
 						</label>
-						<label style="font-size:75%">
+						<label class="pgn-col-6" style="font-size:75%">
 							<input type="checkbox" name="cb" value="1" checked>
 							<span class="pgn-label">Adapts to label's font size</span>
 						</label>
-						<label style="padding:4px;background-color:orange;color:white;">
+						<label class="pgn-col-6" style="background-color:orange;color:white;">
 							<input type="checkbox" name="cb" value="1" checked>
 							<span class="pgn-label">Ignores label colors</span>
 						</label>
@@ -348,20 +355,20 @@
 					5-7 options, a select drop-down keeps the form cleaner.  Remember to always check a default option when
 					presenting a form's initial state.
 					</p>
-					<form class="pgn-form pgn-density-spaced">
-						<label>
+					<form class="pgn-form pgn-row-24 pgn-doubling pgn-density-spaced">
+						<label class="pgn-col-4">
 							<input type="radio" name="rd" value="1" checked>
 							<span class="pgn-label">First choice</span>
 						</label>
-						<label>
+						<label class="pgn-col-4">
 							<input type="radio" name="rd" value="2">
 							<span class="pgn-label">Second choice</span>
 						</label>
-						<label>
+						<label class="pgn-col-4">
 							<input type="radio" name="rd" value="3" disabled>
 							<span class="pgn-label">Disabled</span>
 						</label>
-						<label style="padding:4px;background-color:orange;color:white;font-size:75%;">
+						<label class="pgn-col-4" style="background-color:orange;color:white;font-size:75%;">
 							<input type="radio" name="rd" value="2">
 							<span class="pgn-label">Ignores label colors</span>
 						</label>
@@ -439,7 +446,7 @@
 				Tables with <code>.pgn-table</code> are styled.
 				</p>
 				<div class="pgn-row-10 pgn-doubling">
-					<div class="pgn-col-5" style="border:none">
+					<div class="pgn-col-5">
 						<table class="pgn-table pgn-density-spaced pgn-horizontal pgn-striped">
 							<thead>
 								<tr><th>First</th><th>Second</th><th>Third</th><th>Fourth</th></tr>
@@ -453,7 +460,7 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="pgn-col-5" style="border:none">
+					<div class="pgn-col-5">
 						<table class="pgn-table pgn-density-spaced pgn-gridded pgn-2d">
 							<thead>
 								<tr><th></th><th>Second</th><th>Third</th><th>Fourth</th></tr>
