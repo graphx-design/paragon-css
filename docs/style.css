@@ -40,13 +40,9 @@ h3 code {
 	color: #666;
 }
 
-[class*="pgn-row-"] {
-	margin-top: 1rem;
-}
-
-[class*="pgn-row-"] [class*="pgn-col-"],
-.box {
-	border: 1px solid #444;
+.grid-demo [class*="pgn-col-"] > * {
+	height: 100%;
+	border: 1px solid #333;
 }
 
 p code,

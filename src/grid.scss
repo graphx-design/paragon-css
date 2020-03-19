@@ -1,23 +1,43 @@
 @import "_lib.scss";
 
+body {
+	overflow-x: hidden;
+}
+
 [class*="pgn-row-"] {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: inherit;
+	justify-content: flex-start;
 	align-items: stretch;
-	width: 100%;
+	align-content: flex-start;
 }
 
 [class*="pgn-col-"] {
 	display: inline-block;
 	vertical-align: top;
+	// flex-grow: 1;
 }
 
 [class*="pgn-col-"] > img {
 	width: 100%;
 }
 
+.pgn-density-relaxed [class*="pgn-row-"],
+[class*="pgn-row-"].pgn-density-relaxed {
+	margin-left: -$padding-relaxed;
+	margin-right: -$padding-relaxed;
+}
+.pgn-density-spaced [class*="pgn-row-"],
+[class*="pgn-row-"].pgn-density-spaced {
+	margin-left: -$padding-spaced;
+	margin-right: -$padding-spaced;
+}
+.pgn-density-seamless [class*="pgn-row-"],
+[class*="pgn-row-"].pgn-density-seamless {
+	margin-left: -$padding-seamless;
+	margin-right: -$padding-seamless;
+}
 .pgn-density-relaxed [class*="pgn-col-"] {
 	padding: $padding-relaxed;
 }

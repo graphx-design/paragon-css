@@ -46,12 +46,12 @@
 						</thead>
 						<tbody>
 <!-- BEGIN SIZES -->
-<tr><td>all.css</td><td>15.1KB</td><td>3.7KB</td><td>3.2KB</td></tr>
+<tr><td>all.css</td><td>16.2KB</td><td>3.9KB</td><td>3.3KB</td></tr>
 <tr><td>core.css</td><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
-<tr><td>forms.css</td><td>5.8KB</td><td>1.5KB</td><td>1.3KB</td></tr>
+<tr><td>forms.css</td><td>6.5KB</td><td>1.7KB</td><td>1.4KB</td></tr>
 <tr><td>grid-10.css</td><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>grid-24.css</td><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
-<tr><td>grid.css</td><td>0.5KB</td><td>0.3KB</td><td>0.2KB</td></tr>
+<tr><td>grid.css</td><td>0.9KB</td><td>0.3KB</td><td>0.3KB</td></tr>
 <tr><td>layout.css</td><td>0.8KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><td>tables.css</td><td>1.7KB</td><td>0.6KB</td><td>0.5KB</td></tr>
 <tr><td>transitions.css</td><td>0.4KB</td><td>0.3KB</td><td>0.2KB</td></tr>
@@ -81,16 +81,10 @@
 					<p>
 					This is an early work-in-progress framework. Below are my ramblings so I don't forget anything. ;-)
 					</p>
-					<p>
-					Debate pros and cons of using <code>&lt;span class="pgn-*"&gt;...&lt;/span&gt;</code>vs <code>&lt;pgn-*&gt;...&lt;/pgn-*&gt;</code> even for this non-JS part of our framework.
-					Pro-class: allows tagging other elements with the class, combining classes (i.e. perhaps a <code>&lt;main class="pgn-row-10"&gt;</code> is better than <code>&lt;main&gt;&lt;pgn-row _cols="10"&gt;</code> for the DOM)
-					Pro-tag: shorter
-					</p>
 					<ul>
 						<li>Forms: "help text" after a line break in its labels, but it should be opt-in (click? hover?)</li>
 						<li>Forms: "inline errors" at the bottom of labels or just under inputs. red circled 'i' + red message</li>
 						<li>Forms/Tables: error/warning/highlight/disabled states</li>
-						<li>Grid: mention that a "pgn-row-*" can contain multiple rows, as it wraps. it's only necessary to use several when we want explicit break points</li>
 						<li>Forms: better :checked transitions for checkbox/radio</li>
 						<li>Tables: pgn-density-compact smaller than spaced, default?</li>
 						<li>Tables: horizontal without outside borders, maybe not even TH grey, "simple"</li>
@@ -125,22 +119,21 @@
 					Three classes as parents (immediate or not) are recognized by various modules as indicative of spacing to use
 					between items.  The least relaxed has the highest priority.  For example, grids recognize them as padding:
 					</p>
-					<div class="pgn-row-24">
-						<div class="pgn-col-8" style="border:none">
-							<div class="pgn-row-10 pgn-density-seamless"><div class="pgn-col-10">
-					<code>.pgn-density-seamless</code>
-							</div></div>
-						</div>
-						<div class="pgn-col-8" style="border:none">
-							<div class="pgn-row-10 pgn-density-spaced"><div class="pgn-col-10">
-					<code>.pgn-density-spaced</code>
-							</div></div>
-						</div>
-						<div class="pgn-col-8" style="border:none">
-							<div class="pgn-row-10 pgn-density-relaxed"><div class="pgn-col-10">
-									<code>.pgn-density-relaxed</code>
-							</div></div>
-						</div>
+<style>.box{display:block; border:1px solid black;}</style>
+					<div class="pgn-row-24 pgn-density-seamless">
+						<div class="pgn-col-8"><code class="box">.pgn-density-seamless</code></div>
+						<div class="pgn-col-8"><code class="box">.pgn-density-seamless</code></div>
+						<div class="pgn-col-8"><code class="box">.pgn-density-seamless</code></div>
+					</div>
+					<div class="pgn-row-24 pgn-density-spaced">
+						<div class="pgn-col-8"><code class="box">.pgn-density-spaced</code></div>
+						<div class="pgn-col-8"><code class="box">.pgn-density-spaced</code></div>
+						<div class="pgn-col-8"><code class="box">.pgn-density-spaced</code></div>
+					</div>
+					<div class="pgn-row-24 pgn-density-relaxed">
+						<div class="pgn-col-8"><code class="box">.pgn-density-relaxed</code></div>
+						<div class="pgn-col-8"><code class="box">.pgn-density-relaxed</code></div>
+						<div class="pgn-col-8"><code class="box">.pgn-density-relaxed</code></div>
 					</div>
 				</section>
 
@@ -175,11 +168,11 @@
 				<section>
 					<h3>Block <code>.pgn-block</code></h3>
 					<p>
-					Makes any element (including buttons) <code>display: block</code> and full width.
+					Makes any element (including buttons) a block and full width.
 					</p>
 				</section>
 				<section>
-					<h3>Generic Text Container <code>.pgn-container</code></h3>
+					<h3>Generic Container <code>.pgn-container</code></h3>
 					<p>
 					The <code>.pgn-container</code> class pads a block and limits its width on large viewports.
 					</p>
@@ -212,7 +205,7 @@
 				<p>
 				Rows are <code>.pgn-row-10</code> or <code>.pgn-row-24</code> according to whether you want the row to be divided in
 				10<sup>ths</sup> or 24<sup>ths</sup>.  Columns are <code>.pgn-col-X</code> where <code>X</code> is the multiple
-				width.
+				width.  Rows wrap, so you only need to use multiple row blocks for splitting incomplete lines.
 				</p>
 				<p>
 				<code>.pgn-col-*</code> padding is sensitive to <code>.pgn-density-*</code> higher in the DOM tree
@@ -222,47 +215,47 @@
 				</p>
 				<section>
 					<h3>Grid of 10<sup>ths</sup> <code>.pgn-row-10</code></h3>
-					<div class="pgn-row-10 pgn-density-spaced pgn-mono">
-						<div class="pgn-col-1">.pgn-col-1</div>
-						<div class="pgn-col-9">.pgn-col-9</div>
-						<div class="pgn-col-2">.pgn-col-2</div>
-						<div class="pgn-col-8">.pgn-col-8</div>
-						<div class="pgn-col-3">.pgn-col-3</div>
-						<div class="pgn-col-7">.pgn-col-7</div>
-						<div class="pgn-col-4">.pgn-col-4</div>
-						<div class="pgn-col-6">.pgn-col-6</div>
-						<div class="pgn-col-5">.pgn-col-5</div>
-						<div class="pgn-col-5">.pgn-col-5</div>
-						<div class="pgn-col-10">.pgn-col-10</div>
+					<div class="grid-demo pgn-row-10 pgn-density-seamless pgn-mono">
+						<div class="pgn-col-1"><div>.pgn-col-1</div></div>
+						<div class="pgn-col-9"><div>.pgn-col-9</div></div>
+						<div class="pgn-col-2"><div>.pgn-col-2</div></div>
+						<div class="pgn-col-8"><div>.pgn-col-8</div></div>
+						<div class="pgn-col-3"><div>.pgn-col-3</div></div>
+						<div class="pgn-col-7"><div>.pgn-col-7</div></div>
+						<div class="pgn-col-4"><div>.pgn-col-4</div></div>
+						<div class="pgn-col-6"><div>.pgn-col-6</div></div>
+						<div class="pgn-col-5"><div>.pgn-col-5</div></div>
+						<div class="pgn-col-5"><div>.pgn-col-5</div></div>
+						<div class="pgn-col-10"><div>.pgn-col-10</div></div>
 					</div>
 				</section>
 				<section>
 					<h3>Grid of 24<sup>ths</sup> <code>.pgn-row-24</code></h3>
-					<div class="pgn-row-24 pgn-density-spaced pgn-mono">
-						<div class="pgn-col-1">.pgn-col-1</div>
-						<div class="pgn-col-23">.pgn-col-23</div>
-						<div class="pgn-col-2">.pgn-col-2</div>
-						<div class="pgn-col-22">.pgn-col-22</div>
-						<div class="pgn-col-3">.pgn-col-3</div>
-						<div class="pgn-col-21">.pgn-col-21</div>
-						<div class="pgn-col-4">.pgn-col-4</div>
-						<div class="pgn-col-20">.pgn-col-20</div>
-						<div class="pgn-col-5">.pgn-col-5</div>
-						<div class="pgn-col-19">.pgn-col-19</div>
-						<div class="pgn-col-6">.pgn-col-6</div>
-						<div class="pgn-col-18">.pgn-col-18</div>
-						<div class="pgn-col-7">.pgn-col-7</div>
-						<div class="pgn-col-17">.pgn-col-17</div>
-						<div class="pgn-col-8">.pgn-col-8</div>
-						<div class="pgn-col-16">.pgn-col-16</div>
-						<div class="pgn-col-9">.pgn-col-9</div>
-						<div class="pgn-col-15">.pgn-col-15</div>
-						<div class="pgn-col-10">.pgn-col-10</div>
-						<div class="pgn-col-14">.pgn-col-14</div>
-						<div class="pgn-col-11">.pgn-col-11</div>
-						<div class="pgn-col-13">.pgn-col-13</div>
-						<div class="pgn-col-12">.pgn-col-12</div>
-						<div class="pgn-col-12">.pgn-col-12</div>
+					<div class="grid-demo pgn-row-24 pgn-density-seamless pgn-mono">
+						<div class="pgn-col-1"><div>.pgn-col-1</div></div>
+						<div class="pgn-col-23"><div>.pgn-col-23</div></div>
+						<div class="pgn-col-2"><div>.pgn-col-2</div></div>
+						<div class="pgn-col-22"><div>.pgn-col-22</div></div>
+						<div class="pgn-col-3"><div>.pgn-col-3</div></div>
+						<div class="pgn-col-21"><div>.pgn-col-21</div></div>
+						<div class="pgn-col-4"><div>.pgn-col-4</div></div>
+						<div class="pgn-col-20"><div>.pgn-col-20</div></div>
+						<div class="pgn-col-5"><div>.pgn-col-5</div></div>
+						<div class="pgn-col-19"><div>.pgn-col-19</div></div>
+						<div class="pgn-col-6"><div>.pgn-col-6</div></div>
+						<div class="pgn-col-18"><div>.pgn-col-18</div></div>
+						<div class="pgn-col-7"><div>.pgn-col-7</div></div>
+						<div class="pgn-col-17"><div>.pgn-col-17</div></div>
+						<div class="pgn-col-8"><div>.pgn-col-8</div></div>
+						<div class="pgn-col-16"><div>.pgn-col-16</div></div>
+						<div class="pgn-col-9"><div>.pgn-col-9</div></div>
+						<div class="pgn-col-15"><div>.pgn-col-15</div></div>
+						<div class="pgn-col-10"><div>.pgn-col-10</div></div>
+						<div class="pgn-col-14"><div>.pgn-col-14</div></div>
+						<div class="pgn-col-11"><div>.pgn-col-11</div></div>
+						<div class="pgn-col-13"><div>.pgn-col-13</div></div>
+						<div class="pgn-col-12"><div>.pgn-col-12</div></div>
+						<div class="pgn-col-12"><div>.pgn-col-12</div></div>
 					</div>
 				</section>
 
@@ -289,19 +282,37 @@
 			<section>
 				<h2>Forms <code>forms.css</code></h2>
 				<p>
-				Note that buttons and input widgets with <code>:focus</code> get <code>z-index: 1000</code> in addition to a halo.
+				Note that buttons and input widgets with <code>:focus</code> get a <code>z-index</code> of 1000 or 1001 in addition
+				to the halo.
 				</p>
 				<section>
 					<h3>Fields <code>label.pgn-field input + .pgn-label</code></h3>
-					<form class="pgn-form">
-						<label class="pgn-field">
-							<span class="pgn-label">Normal</span>
-							<input type="text" name="it001" value="User Input Here">
-						</label>
-						<label class="pgn-field">
-							<span class="pgn-label">Disabled</span>
-							<input type="text" name="it001" disabled value="User Input Here">
-						</label>
+					<p>
+					Typical input types for this class are: <code>email</code>, <code>number</code>, <code>password</code>,
+					<code>tel</code>, <code>text</code>, <code>url</code> and possibly <code>search</code>.
+					Fields expand to fill their label's width, so a label may be or be inside a grid cell.
+					We implement <a href="https://uxmovement.com/forms/infield-top-aligned-labels-floating-labels/">infield top
+						aligned labels</a> for their clarity.
+					</p>
+					<form class="pgn-form pgn-row-10 pgn-density-spaced pgn-doubling">
+						<div class="pgn-col-3" style="border:none">
+							<label class="pgn-field">
+								<span class="pgn-label">Normal</span>
+								<input type="text" name="it001" value="User Input Here">
+							</label>
+						</div>
+						<div class="pgn-col-5" style="border:none">
+							<label class="pgn-field">
+								<span class="pgn-label">Disabled</span>
+								<input type="text" name="it002" disabled value="User Input Here">
+							</label>
+						</div>
+						<div class="pgn-col-2" style="border:none">
+							<label class="pgn-field">
+								<span class="pgn-label">Normal</span>
+								<input type="text" name="it003" value="User Input Here">
+							</label>
+						</div>
 					</form>
 				</section>
 				<section>
@@ -372,12 +383,16 @@
 						<button onclick="return false;" class="is-secondary">.is-secondary</button>
 					</form>
 					<h3>Icon Buttons <code>.pgn-icon-button</code></h3>
-					<p>TODO: just icons no circle, so less gaps</p>
+					<p>
+					Unlike other form styles, icon buttons have fixed sizes based on touch display ability and their priority.
+					Normal by default, they may have <code>.is-secondary</code> or <code>.is-priority</code>.
+					On touch devices, these three sizes are 11mm, 15mm and 19mm.
+					</p>
 					<form class="pgn-form">
 							<button onclick="return false;" class="pgn-icon-button" title="Normal">M</button>
-							<a href="#" onclick="return false;" class="pgn-icon-button is-active" title=":active, .is-active">M</a>
 							<button onclick="return false;" class="pgn-icon-button" disabled title=":disabled">M</button>
 							<button onclick="return false;" class="pgn-icon-button is-secondary" title=".is-secondary">M</button>
+							<button onclick="return false;" class="pgn-icon-button is-priority" title=".is-priority">M</button>
 						</dl>
 					</form>
 					<h3>Button groups <code>.pgn-group button, .pgn-group .pgn-button</code></h3>
@@ -412,7 +427,7 @@
 				<section>
 					<h3>Responsive</h3>
 					<p>
-					For touch devices, all buttons have a minimum width and height of 10mm regardless of font size.
+					For touch devices, all buttons have a minimum width and height of 11mm regardless of font size.
 					</p>
 				</section>
 			</section>
@@ -423,7 +438,7 @@
 				<p>
 				Tables with <code>.pgn-table</code> are styled.
 				</p>
-				<div class="pgn-row-10">
+				<div class="pgn-row-10 pgn-doubling">
 					<div class="pgn-col-5" style="border:none">
 						<table class="pgn-table pgn-density-spaced pgn-horizontal pgn-striped">
 							<thead>
