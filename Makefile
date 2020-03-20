@@ -49,7 +49,7 @@ sizes:	full
 	@if [ -e docs/index.html~ ]; then echo "HTML backup file already exists."; exit 1; fi
 	@echo -n >docs/_sizes.html
 	@for F in $(CSS_SIZABLE); do \
-		echo -n "<tr><td>$$F</td><td>" >>docs/_sizes.html ; \
+		echo -n "<tr><th>$$F</th><td>" >>docs/_sizes.html ; \
 		printf '%.1f' $$((1000 * `stat --printf='%s' "dist/$$F"` / 1024))e-3 >>docs/_sizes.html ; \
 		echo -n "KB</td><td>" >>docs/_sizes.html ; \
 		printf '%.1f' $$((1000 * `stat --printf='%s' "dist/$$F.gz"` / 1024))e-3 >>docs/_sizes.html ; \

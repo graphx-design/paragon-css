@@ -93,3 +93,8 @@ dd code {
 	display: block;
 	border: 1px solid #333;
 }
+
+table#pgn-sizes tbody tr:first-child td {
+	font-weight: bold;
+	background-color: rgba(127, 127, 127, 0.05);
+}
