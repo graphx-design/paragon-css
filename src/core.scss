@@ -127,6 +127,8 @@ samp {
 	font-size: 1em;
 }
 .pgn-mono,
+.pgn-notice::before,
+[class*="pgn-dot-"],
 .is-numeric {
 	font-family: $font-mono;
 }

@@ -279,7 +279,7 @@
 
 .pgn-form label [type="checkbox"]:checked + .pgn-label::before {
 	background-color: #333;
-	background-image: inline("icon-check-white.svg");
+	background-image: inline("icons/check-white.svg");
 }
 
 .pgn-form label :disabled + .pgn-label {

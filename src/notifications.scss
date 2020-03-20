@@ -1,0 +1,63 @@
+@import "_lib.scss";
+
+[class*="pgn-dot-"],
+.pgn-notice.is-error::before,
+.pgn-notice.is-warning::before,
+.pgn-notice.is-ok::before {
+	font-style: normal;
+	font-weight: bold;
+	text-transform: none;
+	speak: none;
+	display: inline-block;
+	text-decoration: none;
+	width: 1.4275em;
+	line-height: 1.33em;
+	padding-top: 0.125em;
+	margin-left: 0.2em;
+	margin-right: 0.5em;
+	text-align: center;
+	background-color: rgba(127, 127, 127, 0.5);
+	color: white;
+	border-radius: 100rem;
+}
+[class*="pgn-dot-"] {
+	margin-right: 0.2em;
+}
+.pgn-dot-i::before,
+.pgn-notice.is-ok::before {
+	content: "i";
+}
+.pgn-dot-excl::before,
+.pgn-notice.is-error::before,
+.pgn-notice.is-warning::before {
+	content: "!";
+}
+.pgn-dot-ask::before {
+	content: "?";
+}
+
+.is-error {
+	color: $color-red;
+}
+.is-error [class*="pgn-dot-"],
+.pgn-notice.is-error::before {
+	background-color: $color-red;
+}
+
+.is-warning {
+	color: $color-orange;
+}
+.is-warning [class*="pgn-dot-"],
+.pgn-notice.is-warning::before {
+	background-color: $color-orange;
+	border-radius: 0.5em;
+}
+
+.is-ok {
+	color: $color-green;
+}
+.is-ok [class*="pgn-dot-"],
+.pgn-notice.is-ok::before {
+	background-color: $color-green;
+	border-radius: 0.1em;
+}

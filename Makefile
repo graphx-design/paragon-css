@@ -64,7 +64,7 @@ sizes:	full
 		|tr '~' "\n" \
 		|sed -e '/<!-- BEGIN SIZES -->/{0,//rdocs/_sizes.html' -e '}' \
 		>docs/index.html
-	@rm -f docs/_sizes.html
+	@rm -f docs/_sizes.html dist/*.gz dist/*.br docs/*.gz docs/*.br
 
 %.gz:	%
 	$(GZIP) $<
