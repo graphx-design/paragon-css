@@ -55,15 +55,14 @@ table.pgn-stick-horizontal tfoot tr > th:first-child {
 .pgn-table tr > .is-numeric {
 	text-align: right;
 }
-.pgn-density-relaxed tr > * {
+table.pgn-density-relaxed tr > * {
 	padding: calc($padding-relaxed / 2) $padding-relaxed;
 }
-.pgn-density-spaced tr > * {
+table.pgn-density-spaced tr > * {
 	padding: calc($padding-spaced / 2) $padding-spaced;
 	font-size: 90%;
 }
-.pgn-density-seamless tr > * {
-	padding: $padding-seamless;
+table.pgn-density-seamless tr > * {
 	font-size: 90%;
 }
 

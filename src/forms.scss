@@ -224,10 +224,12 @@
 	vertical-align: top;
 }
 
-.pgn-density-spaced .pgn-label {
+form.pgn-density-spaced .pgn-label {
 	margin-right: $padding-spaced;
 }
-.pgn-density-relaxed .pgn-label {
+form.pgn-density-relaxed .pgn-label,
+form.pgn-density-relaxed button,
+form.pgn-density-relaxed .pgn-button {
 	margin-right: $padding-relaxed;
 }
 
@@ -337,6 +339,10 @@
 		min-width: 15mm;
 		min-height: 15mm;
 	}
+	.pgn-form button,
+	.pgn-button {
+		line-height: calc(15mm - 1em);
+	}
 
 	.pgn-form button.is-secondary,
 	.pgn-form label.is-secondary,
@@ -344,6 +350,7 @@
 	.pgn-button.is-secondary {
 		min-width: 11mm;
 		min-height: 11mm;
+		line-height: calc(11mm - 1em);
 	}
 
 	.pgn-form button.is-priority,
@@ -352,6 +359,7 @@
 	.pgn-button.is-priority {
 		min-width: 19mm;
 		min-height: 19mm;
+		line-height: calc(19mm - 1em);
 	}
 
 	.pgn-form label [type="checkbox"] + .pgn-label::before,

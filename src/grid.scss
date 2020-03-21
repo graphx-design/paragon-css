@@ -1,9 +1,5 @@
 @import "_lib.scss";
 
-body {
-	overflow-x: hidden;
-}
-
 [class*="pgn-row-"] {
 	display: flex;
 	flex-direction: row;
@@ -19,33 +15,29 @@ body {
 	// flex-grow: 1;
 }
 
-[class*="pgn-col-"] > img {
+[class*="pgn-col-"] > img,
+[class*="pgn-col-"] > a > img {
 	width: 100%;
 }
 
-.pgn-density-relaxed [class*="pgn-row-"],
-[class*="pgn-row-"].pgn-density-relaxed {
+.pgn-density-relaxed[class*="pgn-row-"],
+.pgn-density-relaxed > [class*="pgn-row-"] {
 	margin-left: -$padding-relaxed;
 	margin-right: -$padding-relaxed;
 }
-.pgn-density-spaced [class*="pgn-row-"],
-[class*="pgn-row-"].pgn-density-spaced {
+.pgn-density-spaced[class*="pgn-row-"],
+.pgn-density-spaced > [class*="pgn-row-"] {
 	margin-left: -$padding-spaced;
 	margin-right: -$padding-spaced;
 }
-.pgn-density-seamless [class*="pgn-row-"],
-[class*="pgn-row-"].pgn-density-seamless {
-	margin-left: -$padding-seamless;
-	margin-right: -$padding-seamless;
-}
-.pgn-density-relaxed [class*="pgn-col-"] {
+
+.pgn-density-relaxed > [class*="pgn-col-"],
+.pgn-density-relaxed > [class*="pgn-row-"] > [class*="pgn-col-"] {
 	padding: $padding-relaxed;
 }
-.pgn-density-spaced [class*="pgn-col-"] {
+.pgn-density-spaced > [class*="pgn-col-"],
+.pgn-density-spaced > [class*="pgn-row-"] > [class*="pgn-col-"] {
 	padding: $padding-spaced;
-}
-.pgn-density-seamless [class*="pgn-col-"] {
-	padding: $padding-seamless;
 }
 
 @include media-tablet-down {

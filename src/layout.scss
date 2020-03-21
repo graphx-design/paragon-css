@@ -5,7 +5,7 @@
 	display: flex;
 	flex-direction: column;
 }
-.pgn-l-3 .pgn-stretch {
+.pgn-l-3 > :nth-child(2) {
 	flex: 1;
 }
 
@@ -13,14 +13,32 @@
 	display: block;
 	max-width: 100%;
 	width: auto;
-	/* FIXME: Should depend on relaxed/spaced/seamless parent instead? */
-	margin-left: $padding-spaced;
-	margin-right: $padding-spaced;
+}
+.pgn-density-relaxed > .pgn-container,
+.pgn-density-relaxed.pgn-container {
+	padding-left: $padding-relaxed;
+	padding-right: $padding-relaxed;
+}
+.pgn-density-spaced > .pgn-container,
+.pgn-density-spaced.pgn-container {
+	padding-left: $padding-spaced;
+	padding-right: $padding-spaced;
 }
 
 .pgn-block {
 	display: block;
 	width: 100%;
+}
+
+/* Utilities */
+.pgn-center {
+	text-align: center;
+}
+.pgn-justify {
+	text-align: justify;
+}
+.pgn-right {
+	text-align: right;
 }
 
 @include media-mobile-only {
@@ -48,7 +66,7 @@
 
 @include media-desktop-large {
 	.pgn-container {
-		width: 1127px;
+		max-width: $width-text-max;
 		margin-left: auto;
 		margin-right: auto;
 	}

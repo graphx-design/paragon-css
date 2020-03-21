@@ -4,11 +4,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="dist.css">
 	</head>
-	<body onload="setTimeout(function(){document.body.classList.add('loaded')})" class="pgn-sans">
+	<body onload="setTimeout(function(){document.body.classList.add('loaded')})" class="pgn-sans pgn-density-relaxed">
 		<header class="pgn-container">
 			<h1 style="display:inline-block">Paragon CSS Framework</h1>
 		</header>
-		<main class="pgn-container pgn-stretch">
+		<main class="pgn-container">
 
 
 			<section>
@@ -46,13 +46,13 @@
 						</thead>
 						<tbody>
 <!-- BEGIN SIZES -->
-<tr><th>all.css</th><td>17.2KB</td><td>4.2KB</td><td>3.5KB</td></tr>
+<tr><th>all.css</th><td>17.6KB</td><td>4.3KB</td><td>3.6KB</td></tr>
 <tr><th>core.css</th><td>2.7KB</td><td>1.1KB</td><td>1.0KB</td></tr>
-<tr><th>forms.css</th><td>6.6KB</td><td>1.7KB</td><td>1.4KB</td></tr>
+<tr><th>forms.css</th><td>6.8KB</td><td>1.7KB</td><td>1.5KB</td></tr>
 <tr><th>grid-10.css</th><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><th>grid-24.css</th><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
-<tr><th>grid.css</th><td>0.9KB</td><td>0.3KB</td><td>0.3KB</td></tr>
-<tr><th>layout.css</th><td>0.8KB</td><td>0.3KB</td><td>0.2KB</td></tr>
+<tr><th>grid.css</th><td>0.8KB</td><td>0.3KB</td><td>0.2KB</td></tr>
+<tr><th>layout.css</th><td>1.0KB</td><td>0.4KB</td><td>0.3KB</td></tr>
 <tr><th>notifications.css</th><td>1.0KB</td><td>0.4KB</td><td>0.3KB</td></tr>
 <tr><th>tables.css</th><td>1.7KB</td><td>0.6KB</td><td>0.5KB</td></tr>
 <tr><th>transitions.css</th><td>0.4KB</td><td>0.3KB</td><td>0.2KB</td></tr>
@@ -87,7 +87,6 @@
 						<li>Forms: "inline errors" at the bottom of labels or just under inputs. red circled 'i' + red message</li>
 						<li>Forms/Tables: error/warning/highlight/disabled states</li>
 						<li>Forms: better :checked transitions for checkbox/radio</li>
-						<li>Tables: pgn-density-compact smaller than spaced, default?</li>
 						<li>Tables: horizontal without outside borders, maybe not even TH grey, "simple"</li>
 						<li>Tables: make a no-wrap column type, with and without truncation</li>
 						<li>Tables: guaranteed smallest cell: width:1px no-wrap</li>
@@ -117,8 +116,8 @@
 				<section>
 					<h3>Density</h3>
 					<p>
-					Three classes as parents (immediate or not) are recognized by various modules as indicative of spacing to use
-					between items.  The least relaxed has the highest priority.  For example, grids recognize them as padding:
+					Three classes are recognized by various modules as indicative of spacing to use between items.  The least
+					relaxed has the highest priority.  For example, grids recognize them as padding:
 					</p>
 					<div class="pgn-row-24 pgn-density-seamless">
 						<div class="pgn-col-8"><code class="box">.pgn-density-seamless</code></div>
@@ -174,7 +173,8 @@
 				<section>
 					<h3>Generic Container <code>.pgn-container</code></h3>
 					<p>
-					The <code>.pgn-container</code> class pads a block and limits its width on large viewports.
+					The <code>.pgn-container</code> class has side margins dictated by <code>.pgn-density-*</code> (self or
+					immediate parent) and limited width on large viewports.
 					</p>
 				</section>
 				<section>
@@ -186,8 +186,8 @@
 
 						<dt><code>.pgn-l-3</code></dt>
 						<dd>
-						3 children, stacked vertically. The middle child expands as necessary to make sure that the third child
-						is always no higher than the bottom of the viewport.  Typical header-main-footer layout.
+						3 children, stacked vertically. The middle child expands as necessary to make sure that the third child is
+						always no higher than the bottom of the viewport.  Typical header-main-footer layout.
 						</dd>
 
 					</dl>
@@ -208,10 +208,17 @@
 				width.  Rows wrap, so you only need to use multiple row blocks for splitting incomplete lines.
 				</p>
 				<p>
-				<code>.pgn-col-*</code> padding is sensitive to <code>.pgn-density-*</code> higher in the DOM tree
 				</p>
 				<p>
-				An <code>&lt;img&gt;</code> directly inside a <code>.pgn-col-*</code> automatically gets full width.
+				An <code>&lt;img&gt;</code> directly inside a <code>.pgn-col-*</code> or wrapped in just an <code
+				class="html-tag">a</code> automatically gets full width.
+				</p>
+				<p>
+				<strong>Caution:</strong> while <code>.pgn-col-*</code> spacing is sensitive to <code>.pgn-density-*</code> given to
+				its parent row or that row's parent, it also causes a small negative margin on the left and right ends of rows.
+				Therefore, using a page-wide row with non-seamless density will cause horizontal scrolling.  As long as a row's
+				container has at least as much spacing, it is not an issue.  (i.e. A seamless or spaced row fits inside a page-wide
+				relaxed or spaced container.)
 				</p>
 				<section>
 					<h3>Grid of 10<sup>ths</sup> <code>.pgn-row-10</code></h3>
@@ -283,7 +290,7 @@
 				<h2>Forms <code>forms.css</code></h2>
 				<p>
 				Note that buttons and input widgets with <code>:focus</code> get a <code>z-index</code> of 1000 or 1001 in addition
-				to the halo.
+				to the halo.  Note also that margins between some elements is affected by <code>form.pgn-density-*</code>.
 				</p>
 				<section>
 					<h3>Fields <code>label.pgn-field .pgn-label + input|textarea</code></h3>
@@ -291,7 +298,7 @@
 					In addition to text areas, typical input types compatible with this class are: <code>email</code>,
 					<code>number</code>, <code>password</code>, <code>tel</code>, <code>text</code>, <code>url</code> and possibly
 					<code>search</code>.
-					Fields expand to fill their label's width, so a label may be or be inside a grid cell.
+					Fields expand to fill their container's width, which is handy in grids.
 					We implement <a href="https://uxmovement.com/forms/infield-top-aligned-labels-floating-labels/">infield top
 						aligned labels</a> for their clarity.
 					</p>
@@ -386,6 +393,7 @@ H0H 0H0</textarea>
 					<h3>Buttons <code>.pgn-form button, .pgn-button</code></h3>
 					<form class="pgn-form">
 						<button onclick="return false;">Normal</button>
+						<a class="pgn-button" onclick="return false;">Anchor</a>
 						<button onclick="return false;" class="is-active">:active, .is-active</button>
 						<button onclick="return false;" disabled>:disabled</button>
 						<button onclick="return false;" class="is-secondary">.is-secondary</button>
@@ -529,7 +537,7 @@ H0H 0H0</textarea>
 						Right-justified cell.
 						</dd>
 
-						<dt>.pgn-density-*</dt>
+						<dt>table.pgn-density-*</dt>
 						<dd>
 						Tables respond to density with padding and font size.
 						</dd>
