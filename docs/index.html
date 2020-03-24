@@ -49,7 +49,7 @@
 						</thead>
 						<tbody>
 <!-- BEGIN SIZES -->
-<tr><th>all.css</th><td>18.1KB</td><td>4.4KB</td><td>3.7KB</td></tr>
+<tr><th>all.css</th><td>18.1KB</td><td>4.3KB</td><td>3.7KB</td></tr>
 <tr><th>core.css</th><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
 <tr><th>forms.css</th><td>6.8KB</td><td>1.7KB</td><td>1.5KB</td></tr>
 <tr><th>grid-10.css</th><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
@@ -295,7 +295,7 @@
 				to the halo.  Note also that margins between some elements is affected by <code>form.pgn-density-*</code>.
 				</p>
 				<section>
-					<h3>Fields <code>label.pgn-field .pgn-label + input|textarea</code></h3>
+					<h3>Fields <code>label.pgn-field .pgn-label + input|select|textarea</code></h3>
 					<p>
 					In addition to text areas, typical input types compatible with this class are: <code>email</code>,
 					<code>number</code>, <code>password</code>, <code>tel</code>, <code>text</code>, <code>url</code> and possibly
@@ -329,6 +329,37 @@
 								<textarea name="ta">123, Main St.
 Test City, ZZ
 H0H 0H0</textarea>
+							</label>
+						</div>
+						<div class="pgn-col-3">
+							<label class="pgn-field">
+								<span class="pgn-label">Select</span>
+								<select name="sel1">
+									<optgroup label="Group One">
+										<option value="1">Option 1</option>
+										<option value="2">Option 2</option>
+										<option value="3">Option 3</option>
+									</optgroup>
+									<optgroup label="Group Two">
+										<option value="4">Option 4</option>
+										<option value="5">Option 5</option>
+										<option value="6">Option 6</option>
+									</optgroup>
+								</select>
+							</label>
+						</div>
+						<div class="pgn-col-3">
+							<label class="pgn-field">
+								<span class="pgn-label">Combobox</span>
+								<datalist id="dl1">
+									<option value="user001@example.com" label="User One"></option>
+									<option value="user002@example.com" label="User Two"></option>
+									<option value="user003@example.com" label="User Three"></option>
+									<option value="user004@example.com" label="User Four"></option>
+									<option value="user005@example.com" label="User Five"></option>
+									<option value="user006@example.com" label="User Six"></option>
+								</datalist>
+								<input type="text" name="cbx1" list="dl1">
 							</label>
 						</div>
 					</form>
@@ -384,13 +415,6 @@ H0H 0H0</textarea>
 							<span class="pgn-label">Ignores label colors</span>
 						</label>
 					</form>
-				</section>
-				<section>
-					<h3>Drop-down menus <code>TODO</code></h3>
-					<p>
-					General rules of thumb: if there are no more than 5-7 options and the form has enough room, consider using radio
-					buttons, which have a lower cognitive load.
-					</p>
 				</section>
 				<section>
 					<h3>Buttons <code>.pgn-form button, .pgn-button</code></h3>

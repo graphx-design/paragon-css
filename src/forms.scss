@@ -6,6 +6,7 @@
 .pgn-form button.is-secondary:focus,
 .pgn-form label input:focus,
 .pgn-form textarea:focus,
+.pgn-form select:focus,
 .pgn-button:focus,
 .pgn-button.is-secondary:focus,
 .pgn-icon-button.pgn-icon-button:focus,
@@ -181,10 +182,10 @@
 }
 
 /* Keyboard input field */
-/* Typically: textarea, input type=email|number|password|search|tel|text|url */
-/* TODO: textarea */
+/* Typically: textarea, select, input type=email|number|password|search|tel|text|url */
 /* TODO: centralize/uniformize colors with rest of widgets */
 .pgn-form label.pgn-field input,
+.pgn-form label.pgn-field select,
 .pgn-form label.pgn-field textarea {
 	display: block;
 	width: 100%;
