@@ -13,6 +13,7 @@
 html,
 body {
 	height: 100%;
+	font-size: 12pt;
 }
 html {
 	-webkit-box-sizing: border-box;
@@ -44,10 +45,10 @@ ol {
 }
 
 /* Forms */
-input[type="text"],
-input[type="email"],
-input[type="search"],
-input[type="password"] {
+[type="text"],
+[type="email"],
+[type="search"],
+[type="password"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }
@@ -63,7 +64,7 @@ select {
 	text-transform: none;
 }
 button,
-html [type="button"],
+[type="button"],
 [type="reset"],
 [type="submit"] {
 	-webkit-appearance: button;
@@ -128,7 +129,7 @@ samp {
 }
 .pgn-mono,
 .pgn-notice::before,
-[class*="pgn-dot-"],
+.pgn-message::before,
 .is-numeric {
 	font-family: $font-mono;
 }
@@ -175,5 +176,5 @@ template {
 
 p,
 blockquote {
-	margin-bottom: 0.75em;
+	margin-bottom: $paragraph-margin;
 }

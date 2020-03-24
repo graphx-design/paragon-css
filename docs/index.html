@@ -15,14 +15,17 @@
 				<section>
 					<h2>Introduction</h2>
 					<p>
-					There are already plenty of CSS frameworks, with varying levels of complexity.  This one takes the Occam's Razor
-					approach: it is minuscule, restricted to pure CSS.  It strays from the extreme simplicity of the flat layered
-					"paper" trend, in favor of more classic visual cues enhanced to use modern browser capabilities.
+					There are already plenty of CSS frameworks, with varying levels of complexity.  This one attempts to be
+					minuscule, restricted to pure CSS, without sacrificing esthetics which contribute to usability.  It strays from
+					the extreme simplicity of the flat layered "paper" trend, in favor of more classic visual cues enhanced to use
+					modern browser capabilities.
 					</p>
 					<p>
 					Almost all classes begin with the prefix <code>pgn-</code> to prevent collisions with other frameworks.  For
 					brevity, there is no prefix for attribute classes like <code>is-<em>something</em></code>,
-					<code>has-<em>something</em></code> and <code>size-<em>something</em></code>.
+					<code>has-<em>something</em></code> and <code>size-<em>something</em></code>.  Truly independent features like
+					messages have their own custom HTML tag names, like <code class="html-tag">pgn-message</code> instead of being
+					set up as a class to be applied on a <code class="html-tag">div</code> or a <code class="html-tag">span</code>
 					</p>
 					<p>
 					Compiled CSS files are located in <code>dist/</code>.  You may use <code>all.css</code> to get the entire
@@ -46,14 +49,14 @@
 						</thead>
 						<tbody>
 <!-- BEGIN SIZES -->
-<tr><th>all.css</th><td>17.6KB</td><td>4.3KB</td><td>3.6KB</td></tr>
-<tr><th>core.css</th><td>2.7KB</td><td>1.1KB</td><td>1.0KB</td></tr>
+<tr><th>all.css</th><td>18.1KB</td><td>4.4KB</td><td>3.7KB</td></tr>
+<tr><th>core.css</th><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
 <tr><th>forms.css</th><td>6.8KB</td><td>1.7KB</td><td>1.5KB</td></tr>
 <tr><th>grid-10.css</th><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><th>grid-24.css</th><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
 <tr><th>grid.css</th><td>0.8KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><th>layout.css</th><td>1.0KB</td><td>0.4KB</td><td>0.3KB</td></tr>
-<tr><th>notifications.css</th><td>1.0KB</td><td>0.4KB</td><td>0.3KB</td></tr>
+<tr><th>messages.css</th><td>1.4KB</td><td>0.5KB</td><td>0.4KB</td></tr>
 <tr><th>tables.css</th><td>1.7KB</td><td>0.6KB</td><td>0.5KB</td></tr>
 <tr><th>transitions.css</th><td>0.4KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <!-- END SIZES -->
@@ -84,7 +87,6 @@
 					</p>
 					<ul>
 						<li>Forms: "help text" after a line break in its labels, but it should be opt-in (click? hover?)</li>
-						<li>Forms: "inline errors" at the bottom of labels or just under inputs. red circled 'i' + red message</li>
 						<li>Forms/Tables: error/warning/highlight/disabled states</li>
 						<li>Forms: better :checked transitions for checkbox/radio</li>
 						<li>Tables: horizontal without outside borders, maybe not even TH grey, "simple"</li>
@@ -333,6 +335,7 @@ H0H 0H0</textarea>
 				</section>
 				<section>
 					<h3>Field sets</h3>
+					<p>TODO</p>
 				</section>
 				<section>
 					<h3>Checkboxes <code>label input[type=checkbox] + .pgn-label</code></h3>
@@ -549,24 +552,21 @@ H0H 0H0</textarea>
 
 
 			<section>
-				<h2>Notifications <code>notifications.css</code></h2>
+				<h2>Messages <code>messages.css</code></h2>
 				<section>
-					<h3>Dots <code>.pgn-dot-*</code></h3>
-					<p><i class="pgn-dot-ask"></i> this is <code>.pgn-dot-ask</code>.</p>
-					<p><i class="pgn-dot-excl"></i> this is <code>.pgn-dot-excl</code>.</p>
-					<p><i class="pgn-dot-i"></i> this is <code>.pgn-dot-i</code>.</p>
-					<p><i class="pgn-dot-xx">m</i> this is <code>.pgn-dot-xx</code> with a manual "m" inside.</p>
-				</section>
-				<section>
-					<h3>Inline <code>.pgn-notice</code></h3>
+					<h3>Notice <code class="html-tag">pgn-notice</code></h3>
 					<p>A notice with a state automatically gets a color and a dot. No need to insert a dot manually.</p>
-					<p class="pgn-notice is-error">This paragraph has <code>.pgn-notice.is-error</code>.</p>
-					<p class="pgn-notice is-warning">This paragraph has <code>.pgn-notice.is-warning</code>.</p>
-					<p class="pgn-notice is-ok">This paragraph has <code>.pgn-notice.is-ok</code>.</p>
+					<pgn-notice class="is-error">This notice has <code>.is-error</code>.</pgn-notice>
+					<pgn-notice class="is-warning">This notice has <code>.is-warning</code>.</pgn-notice>
+					<pgn-notice class="is-ok">This notice has <code>.is-ok</code>.</pgn-notice>
+					<pgn-notice _char="?">This notice has no state, but it does have <code>_char="?"</code> to override the default "i".</pgn-notice>
 				</section>
 				<section>
-					<h3>Box <code>.pgn-...</code></h3>
-					<p>TODO</p>
+					<h3>Message <code class="html-tag">pgn-message</code></h3>
+					<pgn-message class="is-error">This message has class <code>.is-error</code>.</pgn-message>
+					<pgn-message class="is-warning">This message has class <code>.is-warning</code>.</pgn-message>
+					<pgn-message class="is-ok">This message has class <code>.is-ok</code>.</pgn-message>
+					<pgn-message _char="?">This message has no state, but it does have <code>_char="?"</code>. This text is long for the purpose of seeing wrapping in action. Wrapping requires a lot of text on wide screen desktop monitors. ;-)</pgn-message>
 				</section>
 			</section>
 

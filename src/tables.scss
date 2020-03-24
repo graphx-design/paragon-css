@@ -6,7 +6,7 @@
 }
 
 .pgn-table th {
-	background-color: rgba(127, 127, 127, 0.2);
+	background-color: rgba($color-dim, 0.2);
 }
 
 table.pgn-stick-vertical thead tr > th,
@@ -32,7 +32,7 @@ table.pgn-stick-horizontal tfoot tr > th:first-child {
 }
 
 .pgn-table.pgn-striped tbody tr:nth-child(even) > td {
-	background-color: rgba(127, 127, 127, 0.05);
+	background-color: rgba($color-dim, 0.05);
 }
 
 .pgn-table tr > * {
@@ -40,10 +40,10 @@ table.pgn-stick-horizontal tfoot tr > th:first-child {
 	vertical-align: top;
 }
 .pgn-table.pgn-horizontal tbody tr > * {
-	border-bottom: 1px solid rgba(127, 127, 127, 0.33);
+	border-bottom: 1px solid rgba($color-dim, 0.33);
 }
 .pgn-table.pgn-gridded tr > * {
-	border: 1px solid rgba(127, 127, 127, 0.33);
+	border: 1px solid rgba($color-dim, 0.33);
 }
 
 @for $i from 1 through 12 {
@@ -76,7 +76,7 @@ table.pgn-density-seamless tr > * {
 		width: 100%;
 	}
 	.pgn-table.pgn-stacking tbody tr {
-		border-bottom: 2px solid rgba(127, 127, 127, 0.33);
+		border-bottom: 2px solid rgba($color-dim, 0.33);
 	}
 	.pgn-table.pgn-stacking.pgn-stacking th,
 	.pgn-table.pgn-stacking.pgn-stacking td {

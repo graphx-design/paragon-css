@@ -1,0 +1,92 @@
+@import "_lib.scss";
+
+/* Custom tags need explicit display */
+pgn-notice,
+pgn-message {
+	display: block;
+	margin-bottom: $paragraph-margin;
+}
+
+pgn-notice::before,
+pgn-message::before {
+	font-style: normal;
+	font-weight: bold;
+	text-transform: none;
+	speak: none;
+	display: inline-block;
+	text-decoration: none;
+	width: 1.4275em;
+	line-height: 1.33em;
+	padding-top: 0.125em;
+	margin-left: 0.2em;
+	margin-right: 0.5em;
+	text-align: center;
+	background-color: rgba($color-dim, 0.5);
+	color: white;
+	border-radius: 100rem;
+}
+pgn-notice::before,
+pgn-message::before {
+	content: "i";
+}
+pgn-notice[_char]::before,
+pgn-message[_char]::before {
+	content: attr(_char);
+}
+pgn-notice.is-error::before,
+pgn-notice.is-warning::before,
+pgn-message.is-error::before,
+pgn-message.is-warning::before {
+	content: "!";
+}
+
+.is-error {
+	color: rgb($color-red);
+}
+pgn-notice.is-error::before,
+pgn-message.is-error::before {
+	background-color: rgb($color-red);
+}
+
+.is-warning {
+	color: rgb($color-orange);
+}
+pgn-notice.is-warning::before,
+pgn-message.is-warning::before {
+	background-color: rgb($color-orange);
+	border-radius: 0.5em;
+}
+
+.is-ok {
+	color: rgb($color-green);
+}
+pgn-notice.is-ok::before,
+pgn-message.is-ok::before {
+	background-color: rgb($color-green);
+	border-radius: 0.1em;
+}
+
+pgn-message {
+	position: relative;
+	border: 1px solid rgba($color-dim, 0.2);
+	background-color: rgba($color-dim, 0.05);
+	border-radius: $small-radius;
+	padding: 1em 1em 1em 3.75em;
+}
+pgn-message::before {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+}
+pgn-message.is-error {
+	border-color: rgba($color-red, 0.2);
+	background-color: rgba($color-red, 0.05);
+}
+pgn-message.is-warning {
+	border-color: rgba($color-orange, 0.2);
+	background-color: rgba($color-orange, 0.05);
+}
+pgn-message.is-ok {
+	border-color: rgba($color-green, 0.2);
+	background-color: rgba($color-green, 0.05);
+}

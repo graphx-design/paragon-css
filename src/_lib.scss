@@ -7,9 +7,12 @@ $padding-relaxed: 1.5rem;
 $padding-spaced: 0.75rem;
 $padding-seamless: 0;
 
-$color-red: #b11;
-$color-orange: #b61;
-$color-green: #381;
+$paragraph-margin: 0.75em;
+
+$color-red: 187, 17, 17; // #b11
+$color-orange: 187, 102, 17; // #b61
+$color-green: 51, 136, 17; // #b381
+$color-dim: 127, 127, 127; // #7f7f7f
 
 /* System UI font stacks
  *
