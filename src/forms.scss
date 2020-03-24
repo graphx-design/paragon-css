@@ -184,9 +184,9 @@
 /* Keyboard input field */
 /* Typically: textarea, select, input type=email|number|password|search|tel|text|url */
 /* TODO: centralize/uniformize colors with rest of widgets */
-.pgn-form label.pgn-field input,
-.pgn-form label.pgn-field select,
-.pgn-form label.pgn-field textarea {
+label.pgn-field input,
+label.pgn-field select,
+label.pgn-field textarea {
 	display: block;
 	width: 100%;
 	outline: none;
@@ -195,13 +195,13 @@
 	padding: 1.75em 0.5em 0.5em 0.5em;
 	background-color: rgba($color-dim, 0.02);
 }
-.pgn-form label.pgn-field :disabled {
+label.pgn-field :disabled {
 	color: rgba($color-dim, 0.75);
 	cursor: not-allowed;
 	cursor: no-drop;
 	background-color: rgba($color-dim, 0.125);
 }
-.pgn-form label.pgn-field .pgn-label {
+label.pgn-field .pgn-label {
 	display: block;
 	font-size: 80%;
 	color: rgba(0, 0, 0, 0.67);
@@ -211,7 +211,7 @@
 	padding: 0.625em;
 	border: 1px solid transparent;
 }
-.pgn-form label textarea {
+label.pgn-field textarea {
 	height: 6em;
 }
 
