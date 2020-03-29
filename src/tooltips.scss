@@ -1,0 +1,93 @@
+@import "_lib.scss";
+
+/* Tooltips */
+
+[pgn-tooltip] {
+	position: relative;
+}
+pgn-tooltip,
+[pgn-tooltip]::before {
+	display: none;
+	position: absolute;
+	min-width: min-content;
+	max-width: $min-width;
+	border: 1px solid rgba($color-dim, 0.5);
+	background-color: white;
+	z-index: 1100;
+	padding: 0.75em;
+	border-radius: 0.2em;
+	box-shadow: 2px 2px 6px 2px rgba($color-dim, 0.3);
+	white-space: nowrap;
+	// Align: left by default
+	left: 0;
+	right: auto;
+	// Position: above by default
+	bottom: 100%;
+	margin-bottom: 0.75em;
+	top: auto;
+}
+pgn-tooltip[_right],
+[pgn-tooltip][pgn-tooltip-right]::before {
+	left: auto;
+	right: 0;
+}
+[pgn-tooltip]::before {
+	content: attr(pgn-tooltip);
+}
+pgn-tooltip[_below],
+[pgn-tooltip][pgn-tooltip-below]::before {
+	top: 100%;
+	margin-top: 0.75em;
+	bottom: auto;
+}
+pgn-tooltip::before,
+[pgn-tooltip]::after {
+	display: block;
+	position: absolute;
+	content: "";
+	background-color: white;
+	width: 0.75em;
+	height: 0.75em;
+	box-shadow: 1px 1px 0 0px rgba($color-dim, 0.5);
+	// Align: left by default
+	right: auto;
+	left: 1em;
+	// Position: above by default
+	top: auto;
+	bottom: 0;
+	margin-bottom: -0.4em;
+	transform: rotate(45deg);
+}
+[pgn-tooltip]::after {
+	display: none;
+	top: -1.2em;
+	bottom: auto;
+	z-index: 1101;
+}
+pgn-tooltip[_below]::before {
+	top: 0;
+	bottom: auto;
+	margin-top: -0.4em;
+	transform: rotate(-135deg);
+}
+[pgn-tooltip][pgn-tooltip-below]::after {
+	top: auto;
+	bottom: -0.8em;
+	transform: rotate(-135deg);
+}
+pgn-tooltip[_right]::before,
+[pgn-tooltip][pgn-tooltip-right]::after {
+	left: auto;
+	right: 1em;
+}
+
+/* Activation */
+
+:active + pgn-tooltip,
+:focus + pgn-tooltip,
+[pgn-tooltip]:active::before,
+[pgn-tooltip]:focus::before,
+[pgn-tooltip]:active::after,
+[pgn-tooltip]:focus::after {
+	display: block;
+}

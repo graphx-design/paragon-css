@@ -54,6 +54,8 @@ $font-serif: "Iowan Old Style", "Apple Garamond", "Baskerville",
  * "pointer:coarse" if the browser understands it.
  */
 
+$min-width: 320px;
+
 @mixin media-touch {
 	@media only screen and (max-width: 991px),
 		only screen and (pointer: coarse) {

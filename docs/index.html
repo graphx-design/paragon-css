@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="dist.css">
 	</head>
-	<body onload="setTimeout(function(){document.body.classList.add('loaded')})" class="pgn-sans pgn-density-relaxed">
+	<body ontouchstart onload="setTimeout(function(){document.body.classList.add('loaded')})" class="pgn-sans pgn-density-relaxed">
 		<header class="pgn-container">
 			<h1 style="display:inline-block">Paragon CSS Framework</h1>
 		</header>
@@ -49,8 +49,8 @@
 						</thead>
 						<tbody>
 <!-- BEGIN SIZES -->
-<tr><th>all.css</th><td>18.1KB</td><td>4.3KB</td><td>3.7KB</td></tr>
-<tr><th>core.css</th><td>2.7KB</td><td>1.1KB</td><td>0.9KB</td></tr>
+<tr><th>all.css</th><td>19.4KB</td><td>4.6KB</td><td>3.9KB</td></tr>
+<tr><th>core.css</th><td>2.8KB</td><td>1.1KB</td><td>1.0KB</td></tr>
 <tr><th>forms.css</th><td>6.8KB</td><td>1.7KB</td><td>1.5KB</td></tr>
 <tr><th>grid-10.css</th><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <tr><th>grid-24.css</th><td>2.6KB</td><td>0.4KB</td><td>0.4KB</td></tr>
@@ -58,6 +58,7 @@
 <tr><th>layout.css</th><td>1.0KB</td><td>0.4KB</td><td>0.3KB</td></tr>
 <tr><th>messages.css</th><td>1.4KB</td><td>0.5KB</td><td>0.4KB</td></tr>
 <tr><th>tables.css</th><td>1.7KB</td><td>0.6KB</td><td>0.5KB</td></tr>
+<tr><th>tooltips.css</th><td>1.3KB</td><td>0.5KB</td><td>0.4KB</td></tr>
 <tr><th>transitions.css</th><td>0.4KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <!-- END SIZES -->
 						</tbody>
@@ -86,7 +87,6 @@
 					This is an early work-in-progress framework. Below are my ramblings so I don't forget anything. ;-)
 					</p>
 					<ul>
-						<li>Forms: "help text" after a line break in its labels, but it should be opt-in (click? hover?)</li>
 						<li>Forms/Tables: error/warning/highlight/disabled states</li>
 						<li>Forms: better :checked transitions for checkbox/radio</li>
 						<li>Tables: horizontal without outside borders, maybe not even TH grey, "simple"</li>
@@ -591,6 +591,46 @@ H0H 0H0</textarea>
 					<pgn-message class="is-warning">This message has class <code>.is-warning</code>.</pgn-message>
 					<pgn-message class="is-ok">This message has class <code>.is-ok</code>.</pgn-message>
 					<pgn-message _char="?">This message has no state, but it does have <code>_char="?"</code>. This text is long for the purpose of seeing wrapping in action. Wrapping requires a lot of text on wide screen desktop monitors. ;-)</pgn-message>
+				</section>
+			</section>
+
+
+			<section>
+				<h2>Tooltips <code>tooltips.scss</code></h2>
+				<p>
+				For uniformity with touch devices, our tooltips are touch/click activated.  This requires adding the
+				<code>ontouchstart</code> attribute to <code class="html-tag">body</code> and adding <code>tabindex="0"</code> to
+				non-clickable elements like <code class="html-tag">span</code>.
+				</p>
+				<p>
+				To evade their trigger or parent element's width, tooltips don't break on white space.  Keep this in mind for
+				placement to avoid overflowing the viewport.  For element tooltips, you may insert manual breaks as desired.
+				</p>
+				<section>
+					<h3>Attribute <code>[pgn-tooltip]</code></h3>
+					<p>
+					To give any element (except inputs) a clickable tooltip, the plain text content of the tooltip need simply be
+					supplied in a <code>pgn-tooltip=""</code> attribute.  Optional accompanying boolean attributes
+					<code>pgn-tooltip-below</code> and <code>pgn-tooltip-right</code> affect alignment and position.
+					</p>
+					<p><span tabindex="0" pgn-tooltip="This is an example tooltip.">Click this sentence for example.</span></p>
+				</section>
+				<section>
+					<h3>Element <code class="html-tag">pgn-tooltip</code></h3>
+					<p>
+					To deal with inputs and to use inline HTML in a tooltip, use <code class="html-tag">pgn-tooltip</code> which
+					must immediately follow a focusable element such as <code class="html-tag">input</code>, and both need to be
+					inside a <code>position:relative</code> block.  For our forms, this is easily achieved with a field (an input
+					inside its label).  Optional boolean attributes <code>_below</code> and <code>_right</code> affect alignment and
+					position.
+					</p>
+					<form class="pgn-form">
+						<label class="pgn-field">
+							<span class="pgn-label">Activate this field to see help</span>
+							<input type="text" name="tt1">
+							<pgn-tooltip _below>Tooltips are a great mobile-friendly way to include<br>additional help with form fields.</pgn-tooltip>
+						</label>
+					</form>
 				</section>
 			</section>
 
