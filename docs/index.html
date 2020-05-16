@@ -49,7 +49,7 @@
 						</thead>
 						<tbody>
 <!-- BEGIN SIZES -->
-<tr><th>all.css</th><td>19.4KB</td><td>4.6KB</td><td>3.9KB</td></tr>
+<tr><th>all.css</th><td>20.8KB</td><td>4.8KB</td><td>4.1KB</td></tr>
 <tr><th>core.css</th><td>2.8KB</td><td>1.1KB</td><td>1.0KB</td></tr>
 <tr><th>forms.css</th><td>6.8KB</td><td>1.7KB</td><td>1.5KB</td></tr>
 <tr><th>grid-10.css</th><td>1.1KB</td><td>0.3KB</td><td>0.2KB</td></tr>
@@ -58,6 +58,7 @@
 <tr><th>layout.css</th><td>1.0KB</td><td>0.4KB</td><td>0.3KB</td></tr>
 <tr><th>messages.css</th><td>1.4KB</td><td>0.5KB</td><td>0.4KB</td></tr>
 <tr><th>tables.css</th><td>1.7KB</td><td>0.6KB</td><td>0.5KB</td></tr>
+<tr><th>tabs.css</th><td>1.4KB</td><td>0.5KB</td><td>0.4KB</td></tr>
 <tr><th>tooltips.css</th><td>1.3KB</td><td>0.5KB</td><td>0.4KB</td></tr>
 <tr><th>transitions.css</th><td>0.4KB</td><td>0.3KB</td><td>0.2KB</td></tr>
 <!-- END SIZES -->
@@ -319,7 +320,7 @@
 						</div>
 						<div class="pgn-col-2">
 							<label class="pgn-field">
-								<span class="pgn-label">Normal</span>
+								<span class="pgn-label">TODO:icon</span>
 								<input type="text" name="it003" value="User Input Here">
 							</label>
 						</div>
@@ -591,6 +592,57 @@ H0H 0H0</textarea>
 					<pgn-message class="is-warning">This message has class <code>.is-warning</code>.</pgn-message>
 					<pgn-message class="is-ok">This message has class <code>.is-ok</code>.</pgn-message>
 					<pgn-message _char="?">This message has no state, but it does have <code>_char="?"</code>. This text is long for the purpose of seeing wrapping in action. Wrapping requires a lot of text on wide screen desktop monitors. ;-)</pgn-message>
+				</section>
+			</section>
+
+
+			<section>
+				<h2>Tabs <code>tabs.css</code></h2>
+				<section>
+					<h3>Accordion <code>.pgn-accordion</code></h3>
+					<p>
+					A block which contains a series of the sequence: radio or checkbox, label, <code class="html-tag">div</code>.
+					Spacing between labels, and between labels and their content is dictated by optional density classes on the main
+					block.
+					</p>
+					<div class="pgn-accordion pgn-density-spaced">
+						<input type="radio" name="_acc1" id="_acc1_1"><label for="_acc1_1">First expandable item. Click here to test.</label>
+						<div>
+							<p>This is the content of the first expandable item.</p>
+						</div>
+						<input type="radio" name="_acc1" id="_acc1_2"><label for="_acc1_2">Second expandable item. Click here to test.</label>
+						<div>
+							<p>This is the content of the Second expandable item.</p>
+							<p>The content area expands as necessary.</p>
+						</div>
+						<input type="radio" name="_acc1" id="_acc1_3"><label for="_acc1_3">Third expandable item. Click here to test.</label>
+						<div>
+							<p>This is the content of the Third expandable item.</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Tabs <code>.pgn-tabs</code></h3>
+					<p>
+					A block which contains a series of radio inputs followed by their respective labels, then exactly as many <code
+						class="html-tag">div</code> as there were labels.  Spacing between tabs and their content is dictated by
+					optional density classes on the main block.
+					</p>
+					<div class="pgn-tabs pgn-density-spaced">
+						<input type="radio" id="_tabs1_1" name="_tabs1" checked><label for="_tabs1_1">Tab 1</label>
+						<input type="radio" id="_tabs1_2" name="_tabs1"><label for="_tabs1_2">Tab 2</label>
+						<input type="radio" id="_tabs1_3" name="_tabs1"><label for="_tabs1_3">Tab 3</label>
+						<div>
+							<p>This is tab 1.</p>
+						</div>
+						<div>
+							<p>This is tab 2.</p>
+							<p>It is taller than the others to demonstrate how height is dynamic.</p>
+						</div>
+						<div>
+							<p>This is tab 3.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 

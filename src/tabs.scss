@@ -1,0 +1,68 @@
+@import "_lib.scss";
+
+/* Accordions */
+
+.pgn-accordion > div {
+	visibility: hidden;
+	height: 0;
+	opacity: 0;
+}
+.pgn-accordion > label {
+	display: block;
+}
+.pgn-accordion > label::before {
+	content: "\25ba";
+	display: inline-block;
+	margin: 0 0.5em;
+	transition: transform 300ms; // FIXME: wrong file
+}
+.pgn-accordion > :checked + label::before {
+	transform: rotate(90deg);
+}
+.pgn-accordion > :checked + label + div {
+	visibility: visible;
+	height: auto;
+	opacity: 1;
+}
+
+/* Tabs */
+
+.pgn-accordion > input,
+.pgn-tabs > input {
+	display: none;
+}
+.pgn-tabs > div {
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
+}
+.pgn-accordion.pgn-density-relaxed > label,
+.pgn-tabs.pgn-density-relaxed > label {
+	margin-bottom: $padding-relaxed;
+}
+.pgn-accordion.pgn-density-spaced > label,
+.pgn-tabs.pgn-density-spaced > label {
+	margin-bottom: $padding-spaced;
+}
+.pgn-tabs > label {
+	display: inline-block;
+	user-select: none;
+	cursor: pointer;
+	float: left;
+	padding: $padding-spaced $padding-relaxed;
+	border-bottom: $tiny-radius solid rgba($color-dim, 0.15);
+}
+.pgn-tabs > :checked + label {
+	background-color: rgba($color-dim, 0.15);
+	border-bottom-color: rgba($color-dim, 0.33);
+}
+@for $i from 1 through 8 {
+	.pgn-tabs > :checked:nth-of-type($i) ~ div:nth-of-type($i) {
+		visibility: visible;
+		height: auto;
+		opacity: 1;
+		overflow: auto;
+	}
+}

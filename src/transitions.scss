@@ -1,13 +1,18 @@
 @import "_lib.scss";
 
+$duration: 300ms;
+$duration-slow: 500ms;
+$delay: 0.05s;
+
 .loaded,
 .loaded * {
-	transition: color 0.25s 0.05s, background-color 0.25s 0.05s, opacity 0.5s;
+	transition: color $duration $delay, background-color $duration $delay,
+		opacity $duration-slow;
 }
 
 [class*="pgn-go-"] {
 	animation-iteration-count: 1;
-	animation-duration: 300ms;
+	animation-duration: $duration;
 	animation-timing-function: ease;
 	animation-fill-mode: both;
 	backface-visibility: hidden;
