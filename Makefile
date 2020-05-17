@@ -8,7 +8,7 @@ BROTLI  := brotli -f -k -n
 
 CSS_SRC := $(sort $(wildcard src/*.scss))
 
-CSS_SIZABLE := $(addsuffix .css,$(filter-out _lib,$(basename $(notdir $(CSS_SRC)))))
+CSS_SIZABLE := $(addsuffix .css,paragon $(filter-out paragon,$(filter-out _lib,$(basename $(notdir $(CSS_SRC))))))
 
 CSS_ASSETS := $(addprefix dist/,$(CSS_SIZABLE)) docs/dist.css
 
